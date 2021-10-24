@@ -116,10 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PATH=$PATH:/home/burukkusu/android/android_studio/bin:/home/burukkusu/eclipse
-PATH=$PATH:/home/burukkusu/projects/work/webgl/fundamentals/node_modules/typescript/bin
-PATH=$PATH:/home/burukkusu/android-studio/bin
-PATH=$PATH:/home/burukkusu/neovim/bin
+PATH=$PATH:$HOME/android/android_studio/bin
+PATH=$PATH:$HOME/projects/work/webgl/fundamentals/node_modules/typescript/bin
+PATH=$PATH:$HOME/android-studio/bin
+PATH=$PATH:$HOME/neovim/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
