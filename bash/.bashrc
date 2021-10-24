@@ -116,9 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PATH=$PATH:$HOME/android/android_studio/bin
-PATH=$PATH:$HOME/projects/work/webgl/fundamentals/node_modules/typescript/bin
-PATH=$PATH:$HOME/android-studio/bin
 PATH=$PATH:$HOME/neovim/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
