@@ -6,8 +6,8 @@ ln -s ~/.dotfiles/init.vim ~/.config/nvim/
 
 bashrcLocation="$HOME/.bashrc"
 rm $bashrcLocation
-ln -s ~/.dotfiles/bash/.bashrc ~/.bashrc
+ln -s ~/.dotfiles/bash/.bashrc $bashrcLocation
 
 bashAliasesLocation="$HOME/.bash_aliases"
 rm $bashAliasesLocation
-ln -s ~/.dotfiles/bash/.bash_aliases ~/.bash_aliases
+ln -s ~/.dotfiles/bash/.bash_aliases $bashAliasesLocation
