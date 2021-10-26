@@ -55,11 +55,6 @@ set runtimepath ^=~/.vim runtimepath +=~/.vim/after
 let &packpath = &runtimepath
 
 " clangd for C++, tsserver for typescript
-lua << EOF
---nvim_lsp = require('lspconfig')
---nvim_lsp.clangd.setup({})
---nvim_lsp.tsserver.setup({})
-EOF
 " I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 " I have no idea what is going on
 lua << EOF
@@ -71,7 +66,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 --local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
 local servers = { 'clangd', 'tsserver' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  require('lspconfig')[lsp].setup {
     -- on_attach = my_custom_on_attach,
     capabilities = capabilities,
   }
