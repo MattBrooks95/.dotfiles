@@ -51,10 +51,11 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinko
 set runtimepath ^=~/.vim runtimepath +=~/.vim/after
 let &packpath = &runtimepath
 
-" clangd for C++ editing -> how do I only enable this for c++ projects?
+" clangd for C++, tsserver for typescript
 lua << EOF
 nvim_lsp = require('lspconfig')
 nvim_lsp.clangd.setup({})
+nvim_lsp.tsserver.setup({})
 EOF
 " I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 " I have no idea what is going on
@@ -65,7 +66,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 --local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-local servers = { 'clangd' }
+local servers = { 'clangd', 'tsserver' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     -- on_attach = my_custom_on_attach,
