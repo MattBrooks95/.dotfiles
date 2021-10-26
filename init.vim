@@ -2,6 +2,9 @@
 set relativenumber
 set number
 
+"stop writing lines that are so long
+set colorcolumn=80,120
+
 "sanity
 set nowrap
 
@@ -53,9 +56,9 @@ let &packpath = &runtimepath
 
 " clangd for C++, tsserver for typescript
 lua << EOF
-nvim_lsp = require('lspconfig')
-nvim_lsp.clangd.setup({})
-nvim_lsp.tsserver.setup({})
+--nvim_lsp = require('lspconfig')
+--nvim_lsp.clangd.setup({})
+--nvim_lsp.tsserver.setup({})
 EOF
 " I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 " I have no idea what is going on
