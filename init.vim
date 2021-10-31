@@ -35,20 +35,34 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+"fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+"theme
 Plug 'morhetz/gruvbox'
+"Collection of configurations for built-in LSP client
 Plug 'neovim/nvim-lspconfig'
+
+"completion####################################
+"https://github.com/neovim/nvim-lspconfig/wiki/Snippets
+"autocompletion plugin
 Plug 'hrsh7th/nvim-cmp'
+"LSP source for nvim-cmp
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
+"snippets source for nvim-cmp
+Plug 'saadparwaiz1/cmp_luasnip'
+"snippets plugin
+Plug 'L3MON4D3/LuaSnip'
+"completion####################################
+
 call plug#end()
 
 nnoremap <C-p> :Files<CR>
 
+"setup theme
 autocmd vimenter * ++nested colorscheme gruvbox
 
+"blinking cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set runtimepath ^=~/.vim runtimepath +=~/.vim/after
@@ -67,17 +81,26 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local servers = { 'clangd', 'tsserver' }
 for _, lsp in ipairs(servers) do
 	require('lspconfig')[lsp].setup {
-	-- on_attach = my_custom_on_attach,
-	capabilities = capabilities,
-}
+		-- on_attach = my_custom_on_attach,
+		capabilities = capabilities,
+	}
 end
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+--luasnip setup
+local luasnip = require('luasnip')
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
+	snippet = {
+		-- REQUIRED - you must specify a snippet engine
+		expand = function(args) 
+			require('luasnip').lsp_expand(args.body);
+		end,
+	},
 	mapping = {
 		['<C-p>'] = cmp.mapping.select_prev_item(),
 		['<C-n>'] = cmp.mapping.select_next_item(),
@@ -92,6 +115,11 @@ cmp.setup {
 		['<Tab>'] = function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				vim.fn.feedkeys(
+					vim.api.nvim_replace_termcodes('Plug>luasnip-expand-or-jump', true, true, true),
+					''
+				)
 			else
 				fallback()
 			end
@@ -99,6 +127,11 @@ cmp.setup {
 		['<S-Tab>'] = function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				vim.fn.feedkeys(
+					vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true),
+					''
+				)
 			else
 				fallback()
 			end
