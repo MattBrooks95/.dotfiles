@@ -1,7 +1,7 @@
 #!/bin/bash
-read -n 1 -s -r -p "This script may cause issues making links to directories that do not exist yet, like ~/.config/nvim. Install things first! Press any key to continue"
+read -n 1 -s -r -p "will remove some files before setting up the sym links, also makes dir ~/.config/nvim. Press any key to continue"
 #TODO can you do these in a loop somehow? need to learn how to bash script...
-#TODO do you need to put in remove statements to remove what was already there?
+mkdir -p ~/.config/nvim
 ln -s ~/.dotfiles/init.vim ~/.config/nvim/
 
 bashrcLocation="$HOME/.bashrc"
