@@ -11,3 +11,7 @@ ln -s ~/.dotfiles/bash/.bashrc $bashrcLocation
 bashAliasesLocation="$HOME/.bash_aliases"
 rm $bashAliasesLocation
 ln -s ~/.dotfiles/bash/.bash_aliases $bashAliasesLocation
+
+tmuxConfLocation="$HOME/.tmux.conf"
+rm $tmuxConfLocation
+ln -s ~/.dotfiles/tmux/.tmux.conf $tmuxConfLocation
