@@ -28,6 +28,12 @@ set nohlsearch
 "letters are highlighted as you type
 set incsearch
 
+" thank you Primeagen
+" ensure that there are always some lines above and below the curser
+set scrolloff=8
+" for showing which lines have been changed in git, which lines have errors
+set signcolumn=yes
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
