@@ -48,6 +48,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 "Collection of configurations for built-in LSP client
 Plug 'neovim/nvim-lspconfig'
+" allows customization of nvm cmp menu
+Plug 'onsails/lspkind-nvim'
 
 "completion####################################
 "https://github.com/neovim/nvim-lspconfig/wiki/Snippets
@@ -55,6 +57,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 "LSP source for nvim-cmp
 Plug 'hrsh7th/cmp-nvim-lsp'
+" buffer source
+Plug 'hrsh7th/cmp-buffer'
 "snippets source for nvim-cmp
 Plug 'saadparwaiz1/cmp_luasnip'
 "snippets plugin
@@ -74,58 +78,68 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinko
 set runtimepath ^=~/.vim runtimepath +=~/.vim/after
 let &packpath = &runtimepath
 
-" clangd for C++, tsserver for typescript
-" I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
-" I have no idea what is going on
-lua << EOF
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
---local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-local servers = { 'clangd', 'tsserver' }
-for _, lsp in ipairs(servers) do
-	require('lspconfig')[lsp].setup {
-		-- on_attach = my_custom_on_attach,
-		capabilities = capabilities,
-	}
-end
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,menuone,noselect'
-
---luasnip setup
+" nvm cmp setup
+lua <<EOF
 local luasnip = require('luasnip')
+local cmp = require('cmp')
+local lspkind = require("lspkind")
+lspkind.init({
+	symbol_map = {
+		Text = "",
+		Method = "",
+		Function = "",
+		Constructor = "",
+		Field = "",
+		Variable = "",
+		Class = "",
+		Interface = "",
+		Module = "",
+		Property = "",
+		Unit = "",
+		Value = "",
+		Enum = "",
+		Keyword = "",
+		Snippet = "",
+		Color = "",
+		File = "",
+		Reference = "",
+		Folder = "",
+		EnumMember = "",
+		Constant = "",
+		Struct = "",
+		Event = "",
+		Operator = "",
+		TypeParameter = ""
+	}
+})
 
--- nvim-cmp setup
-local cmp = require 'cmp'
-cmp.setup {
+cmp.setup({
+	completion = {
+		completeopt = 'menu,menuone,noinsert',
+	},
+	-- REQUIRED a snippet engine is necessary for auto completion
 	snippet = {
-		-- REQUIRED - you must specify a snippet engine
-		expand = function(args) 
-			require('luasnip').lsp_expand(args.body);
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 	mapping = {
 		['<C-p>'] = cmp.mapping.select_prev_item(),
-		['<C-n>'] = cmp.mapping.select_next_item(),
-		['<C-d>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.close(),
-		['<CR>'] = cmp.mapping.confirm {
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		},
+		--idk if I want or need these yet
+--		['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+--		['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+--		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+--		['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+--		['<C-e>'] = cmp.mapping({
+--			i = cmp.mapping.abort(),
+--			c = cmp.mapping.close(),
+--		}
 		['<Tab>'] = function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
-				vim.fn.feedkeys(
-					vim.api.nvim_replace_termcodes('Plug>luasnip-expand-or-jump', true, true, true),
-					''
-				)
+				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
@@ -134,18 +148,56 @@ cmp.setup {
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
-				vim.fn.feedkeys(
-					vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true),
-					''
-				)
+				luasnip.jump(-1)
 			else
 				fallback()
 			end
 		end,
+		['<CR>'] = cmp.mapping.confirm({ select = true });
 	},
 	sources = {
-		{ name = 'buffer' },
-		{ name = 'nvim_lsp' },
+		{ name = "nvim_lsp" },
+		-- do I need this?
+		{ name = "luasnip" },
+		--{ name = "buffer", keyword_length = 3 },
 	},
-}
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end
+	},
+	formatting = {
+		format = lspkind.cmp_format {
+			with_text = true,
+			menu = {
+				--buffer = "[buf]",
+				nvm_lsp = "[nvm_lsp]",
+				luasnip = "[luasnip]",
+			},
+		}
+	},
+	--experimental = {
+	--	ghost_text = true,
+	--}
+})
+EOF
+
+" clangd for C++, tsserver for typescript
+" I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+" I have no idea what is going on
+lua << EOF
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+-- Enable some language servers with the additional completion
+-- capabilities offered by nvim-cmp
+--local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = { 'clangd', 'tsserver' }
+for _, lsp in ipairs(servers) do
+	require('lspconfig')[lsp].setup {
+		-- on_attach = my_custom_on_attach,
+		capabilities = capabilities,
+	}
+end
 EOF
