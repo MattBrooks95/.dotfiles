@@ -1,3 +1,5 @@
+let mapleader=" "
+
 "line numbers
 set relativenumber
 set number
@@ -65,9 +67,12 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 "completion####################################
 
+" telescope
+" a native sorter was recommended for better performance
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
-
-nnoremap <C-p> :Files<CR>
 
 "setup theme
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -81,6 +86,8 @@ let &packpath = &runtimepath
 
 " nvm cmp setup
 luafile ~/.config/nvim/nvim_cmp_setup.lua
+" telescope setup
+luafile ~/.config/nvim/nvim_telescope_setup.lua
 
 " clangd for C++, tsserver for typescript
 " I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
@@ -101,3 +108,9 @@ for _, lsp in ipairs(servers) do
 	}
 end
 EOF
+
+" remaps
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>

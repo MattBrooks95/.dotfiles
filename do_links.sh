@@ -4,6 +4,7 @@ read -n 1 -s -r -p "will remove some files before setting up the sym links, also
 mkdir -p ~/.config/nvim
 ln -s ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/nvim/nvim_cmp_setup.lua ~/.config/nvim/nvim_cmp_setup.lua
+ln -s ~/.dotfiles/nvim/nvim_telescope_setup.lua ~/.config/nvim/nvim_telescope_setup.lua
 
 bashrcLocation="$HOME/.bashrc"
 rm $bashrcLocation
