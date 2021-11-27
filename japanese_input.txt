@@ -1,0 +1,8 @@
+I accidentally proceeded with an install of fcitx. It didn't work.
+The newer version, fcitx5 did. You need the fcitx5-mozc package as well.
+Fcitx's default keybind to switch the input method was super + space,
+	which conflicted with a dwm default keybinding. I switched it to ctrl+.
+there are some environment variables that need set in .xprofile to ensure
+	that fcitx is started when you log in.
+TODO find a way to save IME related savings in this repo, so that they are
+	reproducible.

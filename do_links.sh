@@ -21,3 +21,7 @@ ln -s ~/.dotfiles/tmux/.tmux.conf $tmuxConfLocation
 dwmConfLocation="$HOME/source_builds/dwm/config.h"
 rm $dwmConfLocation
 ln -s ~/.dotfiles/dwm/config.h $dwmConfLocation
+
+xprofileLocation="$HOME/.xprofile"
+rm $xprofileLocation
+ln -s ~/.dotfiles/.xprofile $xprofileLocation
