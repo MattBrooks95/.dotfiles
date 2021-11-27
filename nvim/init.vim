@@ -36,6 +36,10 @@ set scrolloff=8
 " for showing which lines have been changed in git, which lines have errors
 set signcolumn=yes
 
+" this appends the vim fugitive status to the status line in the bottom
+" of the screen
+set statusline=%f\ %{FugitiveStatusline()}
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -72,6 +76,9 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+" git
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "setup theme
