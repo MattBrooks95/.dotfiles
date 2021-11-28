@@ -36,9 +36,13 @@ set scrolloff=8
 " for showing which lines have been changed in git, which lines have errors
 set signcolumn=yes
 
+" GIT 
 " this appends the vim fugitive status to the status line in the bottom
 " of the screen
 set statusline=%f\ %{FugitiveStatusline()}
+nmap <leader>gs :G<CR>
+nmap <leader>gc :G commit<CR>
+nmap <leader>gp :G push<CR>
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
