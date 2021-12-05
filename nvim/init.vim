@@ -11,10 +11,15 @@ set colorcolumn=80,120
 set nowrap
 
 "tabbing and white space
-set tabstop=4
-set shiftwidth=4
+"TODO you will need to figure out a way to dynamically switch between
+"spaces and tabs based on the project you're in.
+set noexpandtab
 set nolist
 set listchars+=space:␣,tab:⏟⏟
+
+" indenting
+set autoindent
+set smartindent
 
 "theming
 set bg=dark
