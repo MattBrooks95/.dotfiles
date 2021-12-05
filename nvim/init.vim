@@ -131,10 +131,13 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-" lsp remaps - their were more in the example, but I only
+" lsp remaps - there were more in the example, but I only
 " added in the ones that seemed familiar to me from vs***e
 nnoremap <silent> <leader>ldc <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <leader>ldf <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <leader>lh <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <leader>lr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> <leader>li <cmd>lua vim.lsp.buf.implementation()<CR>
+
+" stop the built-in filetype plugin from fucking with my noexpandtab set
+filetype plugin indent off
