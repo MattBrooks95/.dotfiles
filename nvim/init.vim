@@ -17,6 +17,7 @@ set noexpandtab
 set nolist
 set listchars+=space:␣,tab:⏟⏟
 set tabstop=4
+set shiftwidth=4
 
 " indenting
 set autoindent
