@@ -6,6 +6,10 @@ bashrcLocation="$HOME/.bashrc"
 rm $bashrcLocation
 ln -s ~/.dotfiles/bash/.bashrc $bashrcLocation
 
+bashProfileLocation="$HOME/.bash_profile"
+rm $bashProfileLocation
+ln -s ~/.dotfiles/bash/.bash_profile $bashProfileLocation
+
 bashAliasesLocation="$HOME/.bash_aliases"
 rm $bashAliasesLocation
 ln -s ~/.dotfiles/bash/.bash_aliases $bashAliasesLocation
