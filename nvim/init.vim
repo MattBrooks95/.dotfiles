@@ -141,3 +141,4 @@ nnoremap <silent> <leader>lh <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <leader>lr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> <leader>li <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <leader>lnm <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>
