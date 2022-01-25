@@ -50,6 +50,8 @@ set statusline=%f\ %{FugitiveStatusline()}
 nmap <leader>gs :G<CR>
 nmap <leader>gc :G commit<CR>
 nmap <leader>gp :G push<CR>
+nmap <leader>gd :G diff<CR>
+nmap <leader>gb :G blame<CR>
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
