@@ -5,3 +5,4 @@ export XMODIFIERS=@im=fcitx
 fcitx5 &
 nitrogen --restore &
 slstatus &
+picom &
