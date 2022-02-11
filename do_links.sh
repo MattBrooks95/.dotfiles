@@ -25,3 +25,7 @@ ln -s ~/.dotfiles/dwm/config.h $dwmConfLocation
 xprofileLocation="$HOME/.xprofile"
 rm $xprofileLocation
 ln -s ~/.dotfiles/.xprofile $xprofileLocation
+
+picomFileLocation="$HOME/.config/picom"
+rm $picomFileLocation
+ln -s ~/.dotfiles/picom $picomFileLocation
