@@ -92,6 +92,8 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
+" tree-sitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 "setup theme
@@ -108,6 +110,8 @@ let &packpath = &runtimepath
 luafile ~/.config/nvim/nvim_cmp_setup.lua
 " telescope setup
 luafile ~/.config/nvim/nvim_telescope_setup.lua
+" tree sitter setup
+luafile ~/.config/nvim/nvim_tree_sitter_setup.lua
 
 " clangd for C++, tsserver for typescript
 " I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
