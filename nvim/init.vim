@@ -64,7 +64,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "theme
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+Plug 'sainnhe/everforest'
 "Collection of configurations for built-in LSP client
 Plug 'neovim/nvim-lspconfig'
 " allows customization of nvm cmp menu
@@ -92,10 +93,13 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
+" tree-sitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 "setup theme
-autocmd vimenter * ++nested colorscheme gruvbox
+" autocmd vimenter * ++nested colorscheme gruvbox
+autocmd vimenter * ++nested colorscheme everforest
 
 "blinking cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
@@ -108,6 +112,8 @@ let &packpath = &runtimepath
 luafile ~/.config/nvim/nvim_cmp_setup.lua
 " telescope setup
 luafile ~/.config/nvim/nvim_telescope_setup.lua
+" tree sitter setup
+luafile ~/.config/nvim/nvim_tree_sitter_setup.lua
 
 " clangd for C++, tsserver for typescript
 " I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
