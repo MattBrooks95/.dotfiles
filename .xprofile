@@ -2,6 +2,9 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+xrandr --output DP-0 --auto --output HDMI-0 --auto --right-of DP-0
+xset r rate 500 25
+
 fcitx5 &
 nitrogen --restore &
 slstatus &
