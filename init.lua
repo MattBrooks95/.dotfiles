@@ -144,13 +144,13 @@ vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700
 --let &packpath = &runtimepath
 --
 --
---" nvm cmp setup
---luafile ~/.config/nvim/nvim_cmp_setup.lua
---" telescope setup
---luafile ~/.config/nvim/nvim_telescope_setup.lua
---" tree sitter setup
---luafile ~/.config/nvim/nvim_tree_sitter_setup.lua
---
+--nvm cmp setup
+require("nvim_cmp_setup.lua")
+--telescope setup
+require("nvim_telescope_setup.lua")
+--tree sitter setup
+require("nvim_tree_sitter_setup.lua")
+
 --" clangd for C++, tsserver for typescript
 --" I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 --" I have no idea what is going on
