@@ -134,22 +134,25 @@ call plug#end()
 --
 --"setup theme
 --" autocmd vimenter * ++nested colorscheme gruvbox
---autocmd vimenter * ++nested colorscheme everforest
---
+--TODO Neovim 7.0+ has an api to do autocmds in lua
+vim.api.nvim_exec("autocmd vimenter * ++nested colorscheme everforest", {});
+
 --blinking cursor
 --TODO the curser only starts blinking after leaving insert mode, it does not blink at the start
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 --set runtimepath ^=~/.vim runtimepath +=~/.vim/after
+--vim.opt.runtimepath ="~/.vim runtimepath +=~/.vim/after"
 --let &packpath = &runtimepath
---
---
+
+
+--TODO use pcall to make not finding these scripts not stop execution of this init file
 --nvm cmp setup
-require("nvim_cmp_setup.lua")
+require("nvim_cmp_setup")
 --telescope setup
-require("nvim_telescope_setup.lua")
+require("nvim_telescope_setup")
 --tree sitter setup
-require("nvim_tree_sitter_setup.lua")
+require("nvim_tree_sitter_setup")
 
 --" clangd for C++, tsserver for typescript
 --" I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
