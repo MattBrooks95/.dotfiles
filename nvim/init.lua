@@ -49,7 +49,7 @@ vim.opt.signcolumn = "yes"
 --" GIT 
 --" this appends the vim fugitive status to the status line in the bottom
 --" of the screen
---set statusline=%f\ %{FugitiveStatusline()}
+vim.opt.statusline = "%f\\ %{FugitiveStatusline()}"
 
 --set keymaps in a loop
 function setKeyMaps(gitMappings, mode, options)
