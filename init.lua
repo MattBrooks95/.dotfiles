@@ -50,31 +50,47 @@ vim.opt.signcolumn = "yes"
 --" this appends the vim fugitive status to the status line in the bottom
 --" of the screen
 --set statusline=%f\ %{FugitiveStatusline()}
---TODO move this to a helper function
---I can do similar settings in a loop!
+
+--set keymaps in a loop
+function setKeyMaps(gitMappings, mode, options)
+	for _, gitMapping in ipairs(gitMappings) do 
+		vim.api.nvim_set_keymap(
+			mode,
+			gitMapping[1],
+			gitMapping[2],
+			options
+		)
+	end
+end
+
 local gitMappings = {
 	{ "<leader>gs", ":G<CR>" },
 	{ "<leader>gc", ":G commit<CR>" },
-	{ "<leader>gp", ":G push<CR>  " },
-	{ "<leader>gd", ":G diff<CR>  " },
-	{ "<leader>gb", ":G blame<CR> " },
+	{ "<leader>gp", ":G push<CR>" },
+	{ "<leader>gd", ":G diff<CR>" },
+	{ "<leader>gb", ":G blame<CR>" },
 }
 
-for _, gitMapping in ipairs(gitMappings) do 
-	vim.api.nvim_set_keymap(
-		"n",
-		gitMapping[1],
-		gitMapping[2],
-		{}
-	)
-end
---
---let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
---if empty(glob(data_dir . '/autoload/plug.vim'))
---  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
---  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
---endif
---
+setKeyMaps(gitMappings, "n", {})
+
+--for _, gitMapping in ipairs(gitMappings) do 
+--	vim.api.nvim_set_keymap(
+--		"n",
+--		gitMapping[1],
+--		gitMapping[2],
+--		{}
+--	)
+--end
+
+--TODO this is the cheating way of porting something from viml to lua
+vim.cmd([[
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+]])
+
 --TODO this is the cheating way of porting something from viml to lua
 vim.cmd([[
 call plug#begin('~/.config/nvim/plugged')
@@ -120,9 +136,10 @@ call plug#end()
 --" autocmd vimenter * ++nested colorscheme gruvbox
 --autocmd vimenter * ++nested colorscheme everforest
 --
---"blinking cursor
---set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
---
+--blinking cursor
+--TODO the curser only starts blinking after leaving insert mode, it does not blink at the start
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+
 --set runtimepath ^=~/.vim runtimepath +=~/.vim/after
 --let &packpath = &runtimepath
 --
@@ -137,35 +154,42 @@ call plug#end()
 --" clangd for C++, tsserver for typescript
 --" I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 --" I have no idea what is going on
---lua << EOF
----- Add additional capabilities supported by nvim-cmp
---local capabilities = vim.lsp.protocol.make_client_capabilities()
---capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
---
----- Enable some language servers with the additional completion
----- capabilities offered by nvim-cmp
-----local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
---local servers = { 'clangd', 'tsserver', 'pylsp', 'hls' }
---for _, lsp in ipairs(servers) do
---	require('lspconfig')[lsp].setup {
---		-- on_attach = my_custom_on_attach,
---		capabilities = capabilities,
---	}
---end
---EOF
---
---" telescope remaps
---nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
---nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
---nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
---nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
---
---" lsp remaps - there were more in the example, but I only
---" added in the ones that seemed familiar to me from vs***e
---nnoremap <silent> <leader>ldc <cmd>lua vim.lsp.buf.declaration()<CR>
---nnoremap <silent> <leader>ldf <cmd>lua vim.lsp.buf.definition()<CR>
---nnoremap <silent> <leader>lh <cmd>lua vim.lsp.buf.hover()<CR>
---nnoremap <silent> <leader>lr <cmd>lua vim.lsp.buf.references()<CR>
---nnoremap <silent> <leader>li <cmd>lua vim.lsp.buf.implementation()<CR>
---nnoremap <silent> <leader>lnm <cmd>lua vim.lsp.buf.rename()<CR>
---nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>
+
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+-- Enable some language servers with the additional completion
+-- capabilities offered by nvim-cmp
+--local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = { 'clangd', 'tsserver', 'pylsp', 'hls' }
+for _, lsp in ipairs(servers) do
+	require('lspconfig')[lsp].setup {
+		-- on_attach = my_custom_on_attach,
+		capabilities = capabilities,
+	}
+end
+
+-- telescope remaps
+-- TODO is there a better way to do this? like run the lua directly?
+local telescopeMappings = {
+	{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
+	{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
+	{ "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
+	{ "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>" }
+}
+setKeyMaps(telescopeMappings, "n", { noremap=true })
+
+--lsp remaps - there were more in the example, but I only
+--added in the ones that seemed familiar to me from vs***e
+local lspMappings = {
+	{ "<leader>ldc", "<cmd>lua vim.lsp.buf.declaration()<CR>" },
+	{ "<leader>ldf", "<cmd>lua vim.lsp.buf.definition()<CR>" },
+	{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<CR>" },
+	{ "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>" },
+	{ "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>" },
+	{ "<leader>lnm", "<cmd>lua vim.lsp.buf.rename()<CR>" },
+	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" }
+}
+
+setKeyMaps(lspMappings, "n", { noremap=true, silent=true })
