@@ -171,7 +171,8 @@ local telescopeMappings = {
 	{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
 	{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
 	{ "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
-	{ "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>" }
+	{ "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>" },
+	{ "<leader>fs", "<cmd>lua require('telescope.builtin').git_status()<cr>" }
 }
 setKeyMaps(telescopeMappings, "n", { noremap=true })
 
@@ -186,5 +187,6 @@ local lspMappings = {
 	{ "<leader>lnm", "<cmd>lua vim.lsp.buf.rename()<CR>" },
 	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" }
 }
+-- fuck
 
 setKeyMaps(lspMappings, "n", { noremap=true, silent=true })
