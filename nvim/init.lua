@@ -173,7 +173,8 @@ local telescopeMappings = {
 	{ "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
 	{ "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>" },
 	{ "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>" },
-	{ "<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>" }
+	{ "<leader>fd", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>" },
+	{ "<leader>fs", "<cmd>lua require('telescope.builtin').git_status()<cr>" }
 }
 setKeyMaps(telescopeMappings, "n", { noremap=true })
 
@@ -188,5 +189,6 @@ local lspMappings = {
 	{ "<leader>lnm", "<cmd>lua vim.lsp.buf.rename()<CR>" },
 	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" }
 }
+-- fuck
 
 setKeyMaps(lspMappings, "n", { noremap=true, silent=true })
