@@ -156,8 +156,9 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable some language servers with the additional completion
 -- capabilities offered by nvim-cmp
---local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-local servers = { 'clangd', 'tsserver', 'pylsp', 'hls' }
+-- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+-- get eslint: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+local servers = { 'clangd', 'tsserver', 'pylsp', 'hls', 'eslint' }
 for _, lsp in ipairs(servers) do
 	require('lspconfig')[lsp].setup {
 		-- on_attach = my_custom_on_attach,
