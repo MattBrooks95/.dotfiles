@@ -139,6 +139,18 @@ vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700
 
 
 --TODO use pcall to make not finding these scripts not stop execution of this init file
+--lua snippets
+require("snippets")
+--snippet completion that allows for jumping to the next snippet mode
+--poached from tjdevries, of course
+--keymap.set syntax requires neovim 0.7.0
+--TODO deduplicate the require, make this reusable, look for more useful keymaps
+vim.keymap.set("i", "<c-k>", function()
+	if require('luasnip').expand_or_jumpable() then
+		require('luasnip').expand_or_jump()
+	end
+end, { silent = true })
+
 --nvm cmp setup
 require("nvim_cmp_setup")
 --telescope setup
