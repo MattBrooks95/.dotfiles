@@ -72,12 +72,14 @@ cmp.setup({
 		end,
 		['<CR>'] = cmp.mapping.confirm({ select = true });
 	},
-	sources = {
+	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		-- do I need this?
 		{ name = "luasnip" },
 		--{ name = "buffer", keyword_length = 3 },
-	},
+	}, {
+		--{ name = "buffer" }
+	}),
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)

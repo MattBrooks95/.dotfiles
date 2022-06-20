@@ -49,7 +49,7 @@ vim.opt.signcolumn = "yes"
 --" GIT 
 --" this appends the vim fugitive status to the status line in the bottom
 --" of the screen
-vim.opt.statusline = "%f\\ %{FugitiveStatusline()}"
+vim.opt.statusline = "%<%f\\ %{FugitiveStatusline()} hex:%B dec:%b %h%m%r%=%-14.(%l,%c%V%)\\ %P"
 
 --set keymaps in a loop
 function setKeyMaps(gitMappings, mode, options)
@@ -139,6 +139,18 @@ vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700
 
 
 --TODO use pcall to make not finding these scripts not stop execution of this init file
+--lua snippets
+require("snippets")
+--snippet completion that allows for jumping to the next snippet mode
+--poached from tjdevries, of course
+--keymap.set syntax requires neovim 0.7.0
+--TODO deduplicate the require, make this reusable, look for more useful keymaps
+vim.keymap.set("i", "<c-k>", function()
+	if require('luasnip').expand_or_jumpable() then
+		require('luasnip').expand_or_jump()
+	end
+end, { silent = true })
+
 --nvm cmp setup
 require("nvim_cmp_setup")
 --telescope setup
@@ -156,8 +168,9 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable some language servers with the additional completion
 -- capabilities offered by nvim-cmp
---local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-local servers = { 'clangd', 'tsserver', 'pylsp', 'hls' }
+-- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+-- get eslint: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+local servers = { 'clangd', 'tsserver', 'pylsp', 'hls', 'eslint' }
 for _, lsp in ipairs(servers) do
 	require('lspconfig')[lsp].setup {
 		-- on_attach = my_custom_on_attach,
