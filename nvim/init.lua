@@ -212,7 +212,8 @@ local lspMappings = {
 	{ "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>" },
 	{ "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>" },
 	{ "<leader>lnm", "<cmd>lua vim.lsp.buf.rename()<CR>" },
-	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" }
+	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+	{ "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>" }
 }
 
 setKeyMaps(lspMappings, "n", { noremap=true, silent=true })
