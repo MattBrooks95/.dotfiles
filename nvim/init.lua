@@ -170,7 +170,14 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- capabilities offered by nvim-cmp
 -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
 -- get eslint: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
-local servers = { 'clangd', 'tsserver', 'pylsp', 'hls', 'eslint' }
+local servers = {
+	'clangd',
+	'tsserver',
+	'pylsp',
+	'hls',
+	'eslint',
+	'svelte', -- npm install -g svelte-language-server
+}
 for _, lsp in ipairs(servers) do
 	require('lspconfig')[lsp].setup {
 		-- on_attach = my_custom_on_attach,
@@ -205,8 +212,8 @@ local lspMappings = {
 	{ "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>" },
 	{ "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>" },
 	{ "<leader>lnm", "<cmd>lua vim.lsp.buf.rename()<CR>" },
-	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" }
+	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+	{ "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>" }
 }
--- fuck
 
 setKeyMaps(lspMappings, "n", { noremap=true, silent=true })
