@@ -65,6 +65,7 @@
     wget
     firefox
     git
+	gnome.gnome-keyring
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -84,7 +85,9 @@
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true; #necessary for things like EZConfig
   };
+  # compositor
   services.picom.enable = true;
+
   # enable the keyring for Git auth
   services.gnome.gnome-keyring.enable = true;
 
