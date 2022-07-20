@@ -85,6 +85,8 @@
     windowManager.xmonad.enableContribAndExtras = true; #necessary for things like EZConfig
   };
   services.picom.enable = true;
+  # enable the keyring for Git auth
+  services.gnome.gnome-keyring.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
