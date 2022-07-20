@@ -65,7 +65,6 @@
     wget
     firefox
     git
-	gnome.gnome-keyring
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -87,9 +86,6 @@
   };
   # compositor
   services.picom.enable = true;
-
-  # enable the keyring for Git auth
-  services.gnome.gnome-keyring.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
