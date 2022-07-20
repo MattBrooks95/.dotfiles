@@ -12,6 +12,7 @@
     pkgs.tmux
     pkgs.alacritty
     pkgs.neovim
+	pkgs.gnome.gnome-keyring
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
