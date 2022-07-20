@@ -40,5 +40,10 @@
     enable = true;
     userName = "MattBrooks95";
     userEmail = "28607360+MattBrooks95@users.noreply.github.com";
+	extraConfig = {
+		credential.helper = "${
+			pkgs.git.override { withLibsecret = true; }
+		}/bin/git-credential-libsecret";
+	};
   };
 }
