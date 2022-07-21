@@ -24,6 +24,10 @@
     source = ~/.dotfiles/tmux;
 	recursive = true;
   };
+  xdg.configFile.xmonad = {
+	source = ~/.dotfiles/xmonad;
+	recursive = true;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

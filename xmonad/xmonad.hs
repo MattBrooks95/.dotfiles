@@ -1,0 +1,20 @@
+import XMonad
+import XMonad.Util.EZConfig
+
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.EwmhDesktops
+
+-- overwiret parts of the default config, and specify keybindings/remappings
+myConfig = def
+  { modMask = mod4Mask -- specify super key as mod key
+  , terminal = "alacritty"
+  }
+  `additionalKeysP`
+  [ ("M-S-b", spawn "firefox")
+  , ("M-l", spawn "dm-tool lock") -- lock the screen with Super + L
+  ]
+
+-- use function composition to wire together xmonad and xmobar, then pass in the configuration
+main = xmonad . ewmhFullscreen . ewmh . xmobarProp $ myConfig
