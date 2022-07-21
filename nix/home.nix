@@ -12,6 +12,7 @@
     pkgs.tmux
     pkgs.alacritty
     pkgs.neovim
+	pkgs.git
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
