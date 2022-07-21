@@ -87,6 +87,8 @@
   # compositor
   services.picom.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
