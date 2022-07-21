@@ -13,6 +13,7 @@
     pkgs.alacritty
     pkgs.neovim
 	pkgs.git
+	pkgs.nitrogen
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -41,6 +42,12 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.bash = {
+    enable = true;
+	bashrcExtra = ''
+	  . ~/.dotfiles/bash/.bash_aliases
+	'';
+  };
   programs.git = {
     enable = true;
     userName = "MattBrooks95";
