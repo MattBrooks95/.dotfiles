@@ -15,6 +15,7 @@
 	pkgs.git
 	pkgs.nitrogen
 	pkgs.xmobar
+	pkgs.stack
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
