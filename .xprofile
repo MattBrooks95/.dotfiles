@@ -2,7 +2,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-fcitx5 &
+# fcitx5 &
 nitrogen --restore &
-slstatus &
-picom &
+# these are for my dwm setup. How do I set these conditionally?
+# slstatus &
+# picom &

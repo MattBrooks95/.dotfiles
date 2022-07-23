@@ -14,6 +14,7 @@
     pkgs.neovim
 	pkgs.git
 	pkgs.nitrogen
+	pkgs.xmobar
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -28,6 +29,10 @@
   xdg.configFile.xmonad = {
 	source = ~/.dotfiles/xmonad;
 	recursive = true;
+  };
+  xdg.configFile.xmobar = {
+    source = ~/.dotfiles/xmobar;
+    recursive = true;
   };
 
   home.file.".xprofile".source = ~/.dotfiles/.xprofile;
