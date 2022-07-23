@@ -17,6 +17,8 @@
 	pkgs.xmobar
 	pkgs.stack
 	pkgs.haskell-language-server
+	pkgs.niv
+	pkgs.direnv
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -56,6 +58,7 @@
     enable = true;
 	bashrcExtra = ''
 	  . ~/.dotfiles/bash/.bash_aliases
+	  eval "$(direnv hook bash)"
 	'';
   };
   programs.git = {
