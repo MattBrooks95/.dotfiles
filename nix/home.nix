@@ -16,6 +16,7 @@
 	pkgs.nitrogen
 	pkgs.xmobar
 	pkgs.stack
+	pkgs.haskell-language-server
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
