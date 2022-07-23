@@ -65,6 +65,7 @@
     wget
     firefox
     git
+	docker-compose
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -88,6 +89,8 @@
   services.picom.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
+
+  virtualisation.docker.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
