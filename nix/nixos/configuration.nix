@@ -17,6 +17,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  #the latest kernel makes the x11 service fail to start on boot, but it can be started afterwards in a different tty...
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Setup keyfile
   boot.initrd.secrets = {
@@ -84,6 +86,7 @@
     };
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true; #necessary for things like EZConfig
+	libinput.enable = true;# will this fix the touchpad not working after reboot sometimes?
   };
   # compositor
   services.picom.enable = true;
