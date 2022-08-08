@@ -174,7 +174,7 @@ local servers = {
 	'clangd',
 	'tsserver',
 	'pylsp',
-	'hls',
+	--'hls',
 	'eslint',
 	'svelte', -- npm install -g svelte-language-server
 }
