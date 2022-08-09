@@ -10,6 +10,8 @@
       <nixos-hardware/system76>
       ./hardware-configuration.nix
     ];
+  hardware.system76.kernel-modules.enable = true;
+  hardware.system76.enableAll = true;
   # so that we have sound
   hardware.pulseaudio.enable = true;
 
