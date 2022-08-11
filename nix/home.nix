@@ -12,13 +12,14 @@
     pkgs.tmux
     pkgs.alacritty
     pkgs.neovim
-	pkgs.git
-	pkgs.nitrogen
-	pkgs.xmobar
-	pkgs.stack
-	pkgs.haskell-language-server
-	pkgs.niv
-	pkgs.direnv
+    pkgs.git
+    pkgs.nitrogen
+    pkgs.xmobar
+    pkgs.stack
+    pkgs.haskell-language-server
+    pkgs.niv
+    pkgs.direnv
+    pkgs.discord
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -69,6 +70,7 @@
 		credential.helper = "${
 			pkgs.git.override { withLibsecret = true; }
 		}/bin/git-credential-libsecret";
+		pull.rebase = false;
 	};
   };
 }
