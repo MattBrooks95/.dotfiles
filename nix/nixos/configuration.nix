@@ -61,6 +61,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # enable explicit pulseaudio support for applicable packages
+  nixpkgs.config.pulseaudio = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -69,7 +71,8 @@
     wget
     firefox
     git
-	docker-compose
+    docker-compose
+    fcitx5
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
