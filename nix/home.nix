@@ -19,9 +19,10 @@
     pkgs.haskell-language-server
     pkgs.niv
     pkgs.direnv
-	pkgs.nodePackages."live-server"
-	pkgs.nodePackages."typescript"
-	pkgs.nodePackages."typescript-language-server"
+    pkgs.nodePackages."live-server"
+    pkgs.nodePackages."typescript"
+    pkgs.nodePackages."typescript-language-server"
+    pkgs.flameshot
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
