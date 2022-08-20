@@ -84,6 +84,7 @@
 			pkgs.git.override { withLibsecret = true; }
 		}/bin/git-credential-libsecret";
 		pull.rebase = false;
+		core.editor = "nvim";
 	};
   };
 }
