@@ -14,6 +14,11 @@ ls.add_snippets("typescript", {
 		i(1),
 		t({ "", "**/"}),
 	}),
+	s("desc", {
+		t("describe(\""), i(1) , t("\", ("), i(2), t(") => {"),
+		t({ "", "\t" }), i(3),
+		t({ "", "});" }),
+	}),
 });
 
 --still looking for a clean way to write snippets that have empty lines
