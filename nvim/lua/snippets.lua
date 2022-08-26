@@ -19,6 +19,11 @@ ls.add_snippets("typescript", {
 		t({ "", "\t" }), i(3),
 		t({ "", "});" }),
 	}),
+	s("prom", {
+		t("new Promise((resolve, reject) => {"),
+		t({ "", "\t" }), i(1),
+		t({ "", "});" }),
+	}),
 });
 
 --still looking for a clean way to write snippets that have empty lines
