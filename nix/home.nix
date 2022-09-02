@@ -23,6 +23,7 @@
     pkgs.nodePackages."typescript"
     pkgs.nodePackages."typescript-language-server"
     pkgs.flameshot
+	pkgs.wally-cli
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/

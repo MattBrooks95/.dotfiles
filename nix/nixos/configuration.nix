@@ -56,7 +56,7 @@
   users.users.motoko = {
     isNormalUser = true;
     description = "Matthew Brooks";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" ];
   };
 
   # Allow unfree packages
@@ -73,6 +73,7 @@
     git
     docker-compose
     fcitx5
+	zsa-udev-rules
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
