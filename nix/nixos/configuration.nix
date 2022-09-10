@@ -22,6 +22,8 @@
   #the latest kernel makes the x11 service fail to start on boot, but it can be started afterwards in a different tty...
   #boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   # Setup keyfile
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
@@ -74,6 +76,7 @@
     docker-compose
     fcitx5
 	zsa-udev-rules
+	ntfs3g
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
