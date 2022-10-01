@@ -77,6 +77,7 @@
     fcitx5
 	zsa-udev-rules
 	ntfs3g
+	pavucontrol
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
