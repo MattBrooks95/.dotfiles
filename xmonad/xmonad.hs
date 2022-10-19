@@ -17,6 +17,7 @@ myConfig = def
   `additionalKeysP`
   [ ("M-S-b", spawn "firefox")
   , ("M-l", spawn "dm-tool lock") -- lock the screen with Super + L
+  , ("M-p", spawn "dmenu_run")--dmenu to run programs
   ]
 
 --gonna do this in .xprofile or .xinitrc, so it works for other window managers
