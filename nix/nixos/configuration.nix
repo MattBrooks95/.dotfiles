@@ -15,6 +15,18 @@
   # so that we have sound
   hardware.pulseaudio.enable = true;
 
+  #this seems to fix webgl performance and watching video streams perform much better
+  #https://nixos.wiki/wiki/Accelerated_Video_Playback
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+       intel-media-driver
+       vaapiIntel
+       vaapiVdpau
+       libvdpau-va-gl
+    ];
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
