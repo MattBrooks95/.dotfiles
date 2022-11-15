@@ -12,6 +12,7 @@
     ];
   hardware.system76.kernel-modules.enable = true;
   hardware.system76.enableAll = true;
+  hardware.bluetooth.enable = true;
   # so that we have sound
   hardware.pulseaudio.enable = true;
 
