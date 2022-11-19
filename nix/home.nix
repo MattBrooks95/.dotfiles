@@ -74,7 +74,7 @@
   programs.bash = {
     enable = true;
 	bashrcExtra = ''
-	  . ~/.dotfiles/bash/.bash_aliases
+	  . ~/.dotfiles/bash/.bashrc
 	  eval "$(direnv hook bash)"
 	'';
   };
