@@ -44,6 +44,10 @@
     source = ~/.dotfiles/xmobar;
     recursive = true;
   };
+  xdg.configFile.alacritty = {
+	  source = ~/.dotfiles/alacritty;
+	  recursive = true;
+  };
 
   home.file.".xprofile".source = ~/.dotfiles/.xprofile;
   home.file.".xinitrc".source = ~/.dotfiles/.xinitrc;
