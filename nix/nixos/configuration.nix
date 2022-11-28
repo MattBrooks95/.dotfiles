@@ -34,6 +34,13 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   #the latest kernel makes the x11 service fail to start on boot, but it can be started afterwards in a different tty...
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # nix-shell -p pciutils --run "lspci | grep VGA" will tell you what
+  # graphics devices are availabile, and according to
+  # https://nixos.wiki/wiki/Intel_Graphics, X Server may fail on this
+  # generation intel chip, so we have to tell it to use the device we found
+  # from the lspci command (in this case, the ID was 46a8)
+  # of course, this didn't work =(
+  boot.kernelParams = [ "i915.force_probe=46a8" ];
 
   boot.supportedFilesystems = [ "ntfs" ];
 
