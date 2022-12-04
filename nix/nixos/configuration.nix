@@ -40,7 +40,7 @@
   # generation intel chip, so we have to tell it to use the device we found
   # from the lspci command (in this case, the ID was 46a8)
   # of course, this didn't work =(
-  boot.kernelParams = [ "i915.force_probe=46a8" ];
+  #boot.kernelParams = [ "i915.force_probe=46a8" ];
 
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -136,7 +136,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leavecatenate(variables, "bootdev", bootdev)
+  # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
