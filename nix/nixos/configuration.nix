@@ -33,7 +33,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   #the latest kernel makes the x11 service fail to start on boot, but it can be started afterwards in a different tty...
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_0;
   # nix-shell -p pciutils --run "lspci | grep VGA" will tell you what
   # graphics devices are availabile, and according to
   # https://nixos.wiki/wiki/Intel_Graphics, X Server may fail on this
