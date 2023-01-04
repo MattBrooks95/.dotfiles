@@ -25,6 +25,8 @@
     pkgs.flameshot
 	pkgs.wally-cli
 	pkgs.dmenu
+	pkgs.tree
+	pkgs.fd
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
