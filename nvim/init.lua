@@ -163,8 +163,8 @@ require("nvim_tree_sitter_setup")
 --" I have no idea what is going on
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local nvm_cmp = require('cmp_nvim_lsp')
+local capabilities = nvm_cmp.default_capabilities()
 
 -- Enable some language servers with the additional completion
 -- capabilities offered by nvim-cmp
