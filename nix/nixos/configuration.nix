@@ -98,15 +98,18 @@
 	zsa-udev-rules
 	ntfs3g
 	pavucontrol
+	ncurses
+	gtk2
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+	pinentryFlavor = "gtk2";
   #   enableSSHSupport = true;
-  # };
+  };
 
   # List services that you want to enable:
   services.xserver = {
@@ -126,7 +129,7 @@
   virtualisation.docker.enable = true;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
