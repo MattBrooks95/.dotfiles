@@ -86,6 +86,9 @@
   # enable explicit pulseaudio support for applicable packages
   nixpkgs.config.pulseaudio = true;
 
+  # enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
