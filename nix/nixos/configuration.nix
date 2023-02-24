@@ -103,6 +103,8 @@
 	pavucontrol
 	ncurses
 	gtk2
+	system76-keyboard-configurator #customize keys on lemur pro
+	brightnessctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -120,9 +122,11 @@
     displayManager = {
       lightdm.enable = true;
     };
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true; #necessary for things like EZConfig
-	libinput.enable = true;# will this fix the touchpad not working after reboot sometimes?
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true; #necessary for things like EZConfig
+    };
+    libinput.enable = true;# will this fix the touchpad not working after reboot sometimes? -> no
   };
   # compositor
   services.picom.enable = true;

@@ -38,10 +38,13 @@
     source = ~/.dotfiles/tmux;
 	recursive = true;
   };
-  xdg.configFile.xmonad = {
-	source = ~/.dotfiles/xmonad;
-	recursive = true;
-  };
+  home.file."./.xmonad/xmonad.hs".source = ~/.dotfiles/xmonad/xmonad.hs;
+  # I guess Xmonad wasn't reading the xdg file path, so I had to put the
+  # config file at ./.xmonad/xmonad.hs
+  #xdg.configFile.xmonad = {
+  #  source = ~/.dotfiles/xmonad;
+  #  recursive = true;
+  #};
   xdg.configFile.xmobar = {
     source = ~/.dotfiles/xmobar;
     recursive = true;
