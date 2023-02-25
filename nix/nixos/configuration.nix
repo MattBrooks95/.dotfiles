@@ -126,6 +126,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true; #necessary for things like EZConfig
+	  config = builtins.readFile "/home/motoko/.dotfiles/xmonad/xmonad.hs";
     };
     libinput.enable = true;# will this fix the touchpad not working after reboot sometimes? -> no
   };
