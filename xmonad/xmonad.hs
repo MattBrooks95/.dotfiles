@@ -18,11 +18,11 @@ myConfig = def
   [ ("M-S-b", spawn "firefox")
   , ("M-l", spawn "dm-tool lock") -- lock the screen with Super + L
   , ("M-p", spawn "dmenu_run")--dmenu to run programs
-  , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%") --brightness up
-  , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 10%-") --brightness down
-  , ("<XF86_AudioRaiseVolume>", spawn "amixer set Master 2%+")
-  , ("<XF86_AudioLowerVolume>", spawn "amixer set Master 2%-")
-  , ("<XF86_AudioMute>", spawn "amixer set Master toggle")
+  , ("<XF86MonBrightnessUp>", spawn "light -A 5") --brightness up
+  , ("<XF86MonBrightnessDown>", spawn "light -U 5") --brightness down
+  , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
+  , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
+  , ("<XF86AudioMute>", spawn "amixer set Master toggle")
   ]
 
 -- use function composition to wire together xmonad and xmobar, then pass in the configuration

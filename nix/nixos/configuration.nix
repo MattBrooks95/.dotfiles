@@ -78,7 +78,7 @@
   users.users.motoko = {
     isNormalUser = true;
     description = "Matthew Brooks";
-    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "video" ];
   };
 
   # Allow unfree packages
@@ -104,8 +104,9 @@
 	ncurses
 	gtk2
 	system76-keyboard-configurator #customize keys on lemur pro
-	brightnessctl
   ];
+
+  programs.light.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

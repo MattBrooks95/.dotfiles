@@ -41,10 +41,7 @@
   home.file."./.xmonad/xmonad.hs".source = ~/.dotfiles/xmonad/xmonad.hs;
   # I guess Xmonad wasn't reading the xdg file path, so I had to put the
   # config file at ./.xmonad/xmonad.hs
-  #xdg.configFile.xmonad = {
-  #  source = ~/.dotfiles/xmonad;
-  #  recursive = true;
-  #};
+  #it also wasn't recompiling it so I had to force it to recompile with super+q
   xdg.configFile.xmobar = {
     source = ~/.dotfiles/xmobar;
     recursive = true;
