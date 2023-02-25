@@ -128,6 +128,7 @@
       enable = true;
       enableContribAndExtras = true; #necessary for things like EZConfig
       config = builtins.readFile ../../xmonad/xmonad.hs;
+      enableConfiguredRecompile = true;
     };
     libinput.enable = true;# will this fix the touchpad not working after reboot sometimes? -> no
   };

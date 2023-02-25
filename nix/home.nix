@@ -23,10 +23,10 @@
     pkgs.nodePackages."typescript"
     pkgs.nodePackages."typescript-language-server"
     pkgs.flameshot
-	pkgs.wally-cli
-	pkgs.dmenu
-	pkgs.tree
-	pkgs.fd
+    pkgs.wally-cli
+    pkgs.dmenu
+    pkgs.tree
+    pkgs.fd
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -38,7 +38,7 @@
     source = ~/.dotfiles/tmux;
 	recursive = true;
   };
-  #home.file."./.xmonad/xmonad.hs".source = ~/.dotfiles/xmonad/xmonad.hs;
+  home.file."./.xmonad/xmonad.hs".source = ~/.dotfiles/xmonad/xmonad.hs;
   # I guess Xmonad wasn't reading the xdg file path, so I had to put the
   # config file at ./.xmonad/xmonad.hs
   #it also wasn't recompiling it so I had to force it to recompile with super+q
