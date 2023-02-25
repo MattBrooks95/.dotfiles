@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/system76>
       ./hardware-configuration.nix
     ];
   hardware.system76.kernel-modules.enable = true;
@@ -32,8 +31,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  #the latest kernel makes the x11 service fail to start on boot, but it can be started afterwards in a different tty...
-  boot.kernelPackages = pkgs.linuxPackages_6_0;
+  #I needed this kernel for things on my lemur pro to work properly
+  #when I bought it in around July 2022. 6.0 was a short lived kernel
+  #which has already reached EOL so I need to go to 6.1
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # nix-shell -p pciutils --run "lspci | grep VGA" will tell you what
   # graphics devices are availabile, and according to
   # https://nixos.wiki/wiki/Intel_Graphics, X Server may fail on this
@@ -98,12 +99,12 @@
     git
     docker-compose
     fcitx5
-	zsa-udev-rules
-	ntfs3g
-	pavucontrol
-	ncurses
-	gtk2
-	system76-keyboard-configurator #customize keys on lemur pro
+    zsa-udev-rules
+    ntfs3g
+    pavucontrol
+    ncurses
+    gtk2
+    system76-keyboard-configurator #customize keys on lemur pro
   ];
 
   programs.light.enable = true;
@@ -113,7 +114,7 @@
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-	pinentryFlavor = "gtk2";
+    pinentryFlavor = "gtk2";
   #   enableSSHSupport = true;
   };
 
@@ -126,7 +127,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true; #necessary for things like EZConfig
-	  config = builtins.readFile "/home/motoko/.dotfiles/xmonad/xmonad.hs";
+      config = builtins.readFile ../../xmonad/xmonad.hs;
     };
     libinput.enable = true;# will this fix the touchpad not working after reboot sometimes? -> no
   };
@@ -153,5 +154,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }
