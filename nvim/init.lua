@@ -177,6 +177,7 @@ local servers = {
 	'hls',
 	'eslint',
 	'svelte', -- npm install -g svelte-language-server
+	'elmls',
 }
 for _, lsp in ipairs(servers) do
 	require('lspconfig')[lsp].setup {
