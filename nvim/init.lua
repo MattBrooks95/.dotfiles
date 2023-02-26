@@ -177,8 +177,7 @@ local servers = {
 	'hls',
 	'eslint',
 	'svelte', -- npm install -g svelte-language-server
-	--TODO no idea how to do a python lsp on nixos
-	--'pyright',
+	'elmls',
 }
 for _, lsp in ipairs(servers) do
 	require('lspconfig')[lsp].setup {
