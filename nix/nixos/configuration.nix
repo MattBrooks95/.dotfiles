@@ -2,7 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, neovim-flake, ... }:
+#{ config, pkgs, neovim-flake, ...}: did not allow me to reference my neovim flake
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -105,7 +106,10 @@
     ncurses
     gtk2
     system76-keyboard-configurator #customize keys on lemur pro
-    neovim-flake
+    #neovim-flake <- did not work
+    #neovim-flake.packages.default <- did not work
+    #neovim-flake.defaultPackage <- did not work
+    inputs.neovim-flake.packages.${system}.default
   ];
 
   programs.light.enable = true;

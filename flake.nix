@@ -10,6 +10,7 @@
     };
     neovim-flake = {
       url = "github:MattBrooks95/neovim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -24,16 +25,12 @@
     lib = nixpkgs.lib;
     system = "x86_64-linux";
   in {
-    homeManagerConfigurations = {
-    };
     nixosConfigurations = {
       lemur = lib.nixosSystem {#System76 lemur pro 11
         inherit system;
         #list of nix modules that build up the system configuration
         modules = [
-          {
-            _module.args = inputs;
-          }
+          { _module.args = { inherit inputs; }; }
           ./nix/nixos/configuration.nix
         ];
       };

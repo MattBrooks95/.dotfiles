@@ -11,7 +11,7 @@
     pkgs.ripgrep
     pkgs.tmux
     pkgs.alacritty
-    pkgs.neovim
+    #pkgs.neovim
     pkgs.git
     pkgs.nitrogen
     pkgs.xmobar

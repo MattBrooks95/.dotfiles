@@ -59,7 +59,9 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "neovim": "neovim",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nvim-treesitter": "nvim-treesitter",
         "plenary": "plenary",
         "telescope": "telescope"
@@ -79,21 +81,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1674956471,
-        "narHash": "sha256-BsowghxzKrWokbR2iCMQRngNg0lW+dbl4f04h+ONV2I=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "0e6800f7ecf98dad97c0aa77ce3c19dacf5de119",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1677063315,
         "narHash": "sha256-qiB4ajTeAOVnVSAwCNEEkoybrAlA+cpeiBxLobHndE8=",
@@ -146,7 +133,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "neovim-flake": "neovim-flake",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       }
     },
     "telescope": {
