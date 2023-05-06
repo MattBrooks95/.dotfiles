@@ -83,45 +83,45 @@ endif
 ]])
 
 --TODO this is the cheating way of porting something from viml to lua
-vim.cmd([[
-call plug#begin('~/.config/nvim/plugged')
-"fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-"theme
-"Plug 'morhetz/gruvbox'
-Plug 'sainnhe/everforest'
-"Collection of configurations for built-in LSP client
-Plug 'neovim/nvim-lspconfig'
-" allows customization of nvm cmp menu
-Plug 'onsails/lspkind-nvim'
-
-"completion####################################
-"https://github.com/neovim/nvim-lspconfig/wiki/Snippets
-"autocompletion plugin
-Plug 'hrsh7th/nvim-cmp'
-"LSP source for nvim-cmp
-Plug 'hrsh7th/cmp-nvim-lsp'
-" buffer source
-Plug 'hrsh7th/cmp-buffer'
-"snippets source for nvim-cmp
-Plug 'saadparwaiz1/cmp_luasnip'
-"snippets plugin
-Plug 'L3MON4D3/LuaSnip'
-"completion####################################
-
-" telescope
-" a native sorter was recommended for better performance
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" git
-Plug 'tpope/vim-fugitive'
-" tree-sitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-call plug#end()
-]])
+--vim.cmd([[
+--call plug#begin('~/.config/nvim/plugged')
+--"fuzzy finder
+--Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+--Plug 'junegunn/fzf.vim'
+--"theme
+--"Plug 'morhetz/gruvbox'
+--Plug 'sainnhe/everforest'
+--"Collection of configurations for built-in LSP client
+--Plug 'neovim/nvim-lspconfig'
+--" allows customization of nvm cmp menu
+--Plug 'onsails/lspkind-nvim'
+--
+--"completion####################################
+--"https://github.com/neovim/nvim-lspconfig/wiki/Snippets
+--"autocompletion plugin
+--Plug 'hrsh7th/nvim-cmp'
+--"LSP source for nvim-cmp
+--Plug 'hrsh7th/cmp-nvim-lsp'
+--" buffer source
+--Plug 'hrsh7th/cmp-buffer'
+--"snippets source for nvim-cmp
+--Plug 'saadparwaiz1/cmp_luasnip'
+--"snippets plugin
+--Plug 'L3MON4D3/LuaSnip'
+--"completion####################################
+--
+--" telescope
+--" a native sorter was recommended for better performance
+--Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+--Plug 'nvim-lua/plenary.nvim'
+--Plug 'nvim-telescope/telescope.nvim'
+--
+--" git
+--Plug 'tpope/vim-fugitive'
+--" tree-sitter
+--Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+--call plug#end()
+--]])
 --
 --"setup theme
 --" autocmd vimenter * ++nested colorscheme gruvbox
