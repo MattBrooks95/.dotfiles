@@ -11,7 +11,6 @@
     pkgs.ripgrep
     pkgs.tmux
     pkgs.alacritty
-    #pkgs.neovim
     pkgs.git
     pkgs.nitrogen
     pkgs.xmobar
@@ -36,7 +35,7 @@
   };
   xdg.configFile.tmux = {
     source = ~/.dotfiles/tmux;
-	recursive = true;
+    recursive = true;
   };
   home.file."./.xmonad/xmonad.hs".source = ~/.dotfiles/xmonad/xmonad.hs;
   # I guess Xmonad wasn't reading the xdg file path, so I had to put the
@@ -47,12 +46,16 @@
     recursive = true;
   };
   xdg.configFile.alacritty = {
-	  source = ~/.dotfiles/alacritty;
-	  recursive = true;
+    source = ~/.dotfiles/alacritty;
+    recursive = true;
   };
 
   home.file.".xprofile".source = ~/.dotfiles/.xprofile;
   home.file.".xinitrc".source = ~/.dotfiles/.xinitrc;
+
+  home.file.".bashrc".text = import ./bash.nix;
+  home.file.".bash_profile".text = import ./bash_profile.nix;
+  home.file.".bash_aliases".text = import ./bash_aliases.nix;
 
   i18n = {
     inputMethod = {
@@ -77,23 +80,19 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.bash = {
-    enable = true;
-	bashrcExtra = ''
-	  . ~/.dotfiles/bash/.bashrc
-	  eval "$(direnv hook bash)"
-	'';
-  };
+  #programs.bash = {
+  #  enable = true;
+  #};
   programs.git = {
     enable = true;
     userName = "MattBrooks95";
     userEmail = "28607360+MattBrooks95@users.noreply.github.com";
-	extraConfig = {
-		credential.helper = "${
-			pkgs.git.override { withLibsecret = true; }
-		}/bin/git-credential-libsecret";
-		pull.rebase = false;
-		core.editor = "nvim";
-	};
+    extraConfig = {
+      credential.helper = "${
+        pkgs.git.override { withLibsecret = true; }
+      }/bin/git-credential-libsecret";
+      pull.rebase = false;
+      core.editor = "nvim";
+    };
   };
 }
