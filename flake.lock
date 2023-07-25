@@ -49,12 +49,15 @@
       }
     },
     "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
       "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "lastModified": 1681202837,
+        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
         "type": "github"
       },
       "original": {
@@ -121,16 +124,16 @@
     "neovim": {
       "flake": false,
       "locked": {
-        "lastModified": 1675759034,
-        "narHash": "sha256-vnyHIanZrm9rlvl2tBXxWLsZiwUx9N4dkJ7ohXcinYg=",
-        "ref": "release-0.8",
-        "rev": "b1ae775de618e3e87954a88d533ec17bbef41cdf",
-        "revCount": 23379,
+        "lastModified": 1683734526,
+        "narHash": "sha256-l5mhfPNVGYpWNhJDSvlSPh/85L8Cc0U761fo1yXkL7c=",
+        "ref": "release-0.9",
+        "rev": "35997026a29aaf7a3dd4c51a5838477d4fe78ae7",
+        "revCount": 25515,
         "type": "git",
         "url": "https://github.com/neovim/neovim"
       },
       "original": {
-        "ref": "release-0.8",
+        "ref": "release-0.9",
         "type": "git",
         "url": "https://github.com/neovim/neovim"
       }
@@ -144,9 +147,7 @@
         "lspkind": "lspkind",
         "luasnip": "luasnip",
         "neovim": "neovim",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs",
         "nvim-cmp": "nvim-cmp",
         "nvim-cmp-lsp": "nvim-cmp-lsp",
         "nvim-lspconfig": "nvim-lspconfig",
@@ -156,11 +157,11 @@
         "vim-fugitive": "vim-fugitive"
       },
       "locked": {
-        "lastModified": 1683532509,
-        "narHash": "sha256-xv1Wif3RbM8Csf0AcmIM1St9SvzDPi1x5mMj0wbmYNo=",
+        "lastModified": 1683763225,
+        "narHash": "sha256-aWRf/pYVX5wCunpFHOTGBThb/6QkrLFxLMVuX0hOhAY=",
         "owner": "MattBrooks95",
         "repo": "neovim-flake",
-        "rev": "ed48c0b1879beb875f2b62f8fcce9b6913cf0353",
+        "rev": "6ea3291deb24b895d5ea9a4914921bcb0336a593",
         "type": "github"
       },
       "original": {
@@ -170,6 +171,21 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1690277115,
+        "narHash": "sha256-rEIEIttBIPm90XwTp47plTDrlReQujCXDs1QCey5ueM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c9f9df2f8eff13e7577b3a143e3c47b5223e8084",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1680758185,
         "narHash": "sha256-sCVWwfnk7zEX8Z+OItiH+pcSklrlsLZ4TJTtnxAYREw=",
@@ -237,16 +253,16 @@
     "nvim-treesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1670962668,
-        "narHash": "sha256-/hWyN4RsPt76hlusq4DPYSa6rnHzvxsxrQK4NRzpZjg=",
+        "lastModified": 1681121236,
+        "narHash": "sha256-iPsPDLhVKJ14iP1/2cCgcY9SCKK/DQz9Y0mQB1DqNiM=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "69388e84c34d40c3d5c7d2f310db13276f2179e1",
+        "rev": "cc360a9beb1b30d172438f640e2c3450358c4086",
         "type": "github"
       },
       "original": {
         "owner": "nvim-treesitter",
-        "ref": "v0.8.1",
+        "ref": "v0.9.0",
         "repo": "nvim-treesitter",
         "type": "github"
       }
@@ -272,7 +288,22 @@
       "inputs": {
         "home-manager": "home-manager",
         "neovim-flake": "neovim-flake",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     },
     "telescope": {
