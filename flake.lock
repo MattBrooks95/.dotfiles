@@ -157,11 +157,11 @@
         "vim-fugitive": "vim-fugitive"
       },
       "locked": {
-        "lastModified": 1683763225,
-        "narHash": "sha256-aWRf/pYVX5wCunpFHOTGBThb/6QkrLFxLMVuX0hOhAY=",
+        "lastModified": 1690280892,
+        "narHash": "sha256-hYF9DmrLvm7bSKmcuPkVfU+gk8jO+Zq1MR2X0YP9IZc=",
         "owner": "MattBrooks95",
         "repo": "neovim-flake",
-        "rev": "6ea3291deb24b895d5ea9a4914921bcb0336a593",
+        "rev": "2c9ca9cec12895d0ade77f6e395dfce54e342b95",
         "type": "github"
       },
       "original": {
@@ -172,11 +172,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1690277115,
-        "narHash": "sha256-rEIEIttBIPm90XwTp47plTDrlReQujCXDs1QCey5ueM=",
+        "lastModified": 1683762134,
+        "narHash": "sha256-aat5jZXPD/UrWRUbSX88B9/0O/RFrLcU4+HfU7we+EM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c9f9df2f8eff13e7577b3a143e3c47b5223e8084",
+        "rev": "eb5e08f38cbde71623ee0209632dd0ff700627dc",
         "type": "github"
       },
       "original": {
