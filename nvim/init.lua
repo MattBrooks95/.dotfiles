@@ -174,17 +174,24 @@ local servers = {
 	'clangd',
 	'tsserver',
 	'pylsp',
-	'hls',
 	'eslint',
 	'svelte', -- npm install -g svelte-language-server
 	'elmls',
 }
+
+local lspConfig = require('lspconfig')
+
 for _, lsp in ipairs(servers) do
-	require('lspconfig')[lsp].setup {
+	lspConfig[lsp].setup {
 		-- on_attach = my_custom_on_attach,
 		capabilities = capabilities,
 	}
 end
+-- need to set some params for the haskell language server
+lspConfig['hls'].setup {
+	capabilities = capabilities,
+	cmd = {"haskell-language-server", "--lsp"}
+}
 
 -- telescope remaps
 -- TODO is there a better way to do this? like run the lua directly?
