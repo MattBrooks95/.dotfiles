@@ -196,18 +196,18 @@ lspConfig['hls'].setup {
 -- telescope remaps
 -- TODO is there a better way to do this? like run the lua directly?
 local telescopeMappings = {
-	{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>" },
-	{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
-	{ "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>" },
-	{ "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>" },
+	{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>" },
+	{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>" },
+	{ "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>" },
+	{ "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>" },
 	-- resume prev telescope search
-	{ "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>" },
+	{ "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<CR>" },
 	-- jump to symbol in file
-	{ "<leader>fd", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>" },
+	{ "<leader>fd", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>" },
 	-- list all files shown with 'git status'
-	{ "<leader>fs", "<cmd>lua require('telescope.builtin').git_status()<cr>" },
+	{ "<leader>fs", "<cmd>lua require('telescope.builtin').git_status()<CR>" },
 	-- find 'all' files listed in git
-	{ "<leader>fa", "<cmd>lua require('telescope.builtin').git_files()<cr>" }
+	{ "<leader>fa", "<cmd>lua require('telescope.builtin').git_files()<CR>" }
 }
 setKeyMaps(telescopeMappings, "n", { noremap=true })
 
@@ -225,3 +225,15 @@ local lspMappings = {
 }
 
 setKeyMaps(lspMappings, "n", { noremap=true, silent=true })
+
+local treeSitterMappings = {
+	-- to stop tree sitter ('x' for off)
+	{ "<leader>tx", "<cmd>lua vim.treesitter.stop()<CR>" },
+	-- to start tree sitter ('o' for o)
+	{ "<leader>to", "<cmd>lua vim.treesitter.start()<CR>"},
+	-- inspect tree
+	{ "<leader>ti", "<cmd>lua vim.treesitter.inspect_tree()<CR>"}
+}
+
+setKeyMaps(treeSitterMappings, "n", { noremap=true, silent=true })
+
