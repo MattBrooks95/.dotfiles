@@ -175,8 +175,9 @@ local servers = {
 	'tsserver',
 	'pylsp',
 	'eslint',
-	'svelte', -- npm install -g svelte-language-server
-	'elmls',
+	-- 'svelte', -- npm install -g svelte-language-server
+	-- 'elmls',
+	'rust_analyzer',
 }
 
 local lspConfig = require('lspconfig')
