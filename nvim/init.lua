@@ -19,6 +19,9 @@ vim.opt.listchars = { space="␣", tab="⏟⏟" }
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
+--turn off the mouse because bumping your touchpad sucks
+vim.opt.mouse = ""
+
 --indenting
 vim.opt.autoindent = true
 vim.opt.smartindent = true
