@@ -2,9 +2,9 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-23.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.11";
       #ensure that home manager and nixos are going to use the same packages
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -13,7 +13,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-flake, ... } @ inputs:
+  outputs = { self
+    , nixpkgs
+    , home-manager
+    , neovim-flake
+    , ... } @ inputs:
   let
     pkgs = import nixpkgs {
       inherit system;
@@ -31,6 +35,12 @@
         modules = [
           { _module.args = { inherit inputs; }; }
           ./nix/nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.motoko = import ./nix/nixos/motoko.nix;
+            }
         ];
       };
     };

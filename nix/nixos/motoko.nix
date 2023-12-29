@@ -1,66 +1,65 @@
 { config, pkgs, ... }:
-
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "motoko";
   home.homeDirectory = "/home/motoko";
 
-  home.packages = [
-    pkgs.htop
-    pkgs.ripgrep
-    pkgs.tmux
-    pkgs.alacritty
-    pkgs.git
-    pkgs.nitrogen
-    pkgs.xmobar
-    pkgs.stack
-    pkgs.haskell-language-server
-    pkgs.niv
-    pkgs.direnv
-    pkgs.nodePackages."live-server"
-    pkgs.nodePackages."typescript"
-    pkgs.nodePackages."typescript-language-server"
-    pkgs.flameshot
-    pkgs.wally-cli
-    pkgs.dmenu
-    pkgs.tree
-    pkgs.fd
+  home.packages = with pkgs; [
+    htop
+    ripgrep
+    tmux
+    alacritty
+    git
+    nitrogen
+    xmobar
+    stack
+    haskell-language-server
+    niv
+    direnv
+    nodePackages."live-server"
+    nodePackages."typescript"
+    nodePackages."typescript-language-server"
+    flameshot
+    wally-cli
+    dmenu
+    tree
+    fd
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
   xdg.configFile.nvim = {
-    source = ~/.dotfiles/nvim;
+    source = ../../nvim;
     recursive = true;
   };
   xdg.configFile.tmux = {
-    source = ~/.dotfiles/tmux;
+    source = ../../tmux;
     recursive = true;
   };
-  home.file."./.xmonad/xmonad.hs".source = ~/.dotfiles/xmonad/xmonad.hs;
+  home.file."./.xmonad/xmonad.hs".source = ../../xmonad/xmonad.hs;
   # I guess Xmonad wasn't reading the xdg file path, so I had to put the
   # config file at ./.xmonad/xmonad.hs
   #it also wasn't recompiling it so I had to force it to recompile with super+q
   xdg.configFile.xmobar = {
-    source = ~/.dotfiles/xmobar;
+    source = ../../xmobar;
     recursive = true;
   };
   xdg.configFile.alacritty = {
-    source = ~/.dotfiles/alacritty;
+    source = ../../alacritty;
     recursive = true;
   };
 
-  home.file.".xprofile".source = ~/.dotfiles/.xprofile;
-  home.file.".xinitrc".source = ~/.dotfiles/.xinitrc;
+  home.file.".xprofile".source = ../../.xprofile;
+  home.file.".xinitrc".source = ../../.xinitrc;
 
-  home.file.".bashrc".text = import ./bash.nix;
-  home.file.".bash_profile".text = import ./bash_profile.nix;
-  home.file.".bash_aliases".text = import ./bash_aliases.nix;
+  home.file.".bashrc".text = import ../bash.nix;
+  home.file.".bash_profile".text = import ../bash_profile.nix;
+  home.file.".bash_aliases".text = import ../bash_aliases.nix;
 
   i18n = {
     inputMethod = {
       enabled = "fcitx5";
-      fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
+      #fcitx5.engines = with pkgs.fcitx-engines; [ mozc ];
       fcitx5.addons = with pkgs; [
         fcitx5-mozc
         fcitx5-gtk
@@ -78,11 +77,6 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-  #programs.bash = {
-  #  enable = true;
-  #};
   programs.git = {
     enable = true;
     userName = "MattBrooks95";
