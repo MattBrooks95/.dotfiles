@@ -129,7 +129,10 @@ endif
 --"setup theme
 --" autocmd vimenter * ++nested colorscheme gruvbox
 --TODO Neovim 7.0+ has an api to do autocmds in lua
-vim.api.nvim_exec("autocmd vimenter * ++nested colorscheme everforest", {});
+--vim.api.nvim_exec("autocmd vimenter * ++nested colorscheme everforest", {});
+vim.api.nvim_create_autocmd(
+	{"VimEnter"}, {command = "colorscheme tokyonight-moon"}
+);
 
 --blinking cursor
 --TODO the curser only starts blinking after leaving insert mode, it does not blink at the start
