@@ -35,12 +35,19 @@ ls.add_snippets("typescript", {
 		t({ "", "});"}),
 	}),
 	s("impr", {
-		t("import * as React from \"react\";")
+		t("import React from \"react\";")
 	}),
 	s("tstest", {
 		t("test(\""), i(1), t("\", ("), i(2), t(") => {"),
 		t({"", "\t"}), i(3),
 		t({"", "});"}),
+	}),
+	s("reactc", {
+		t("const "), i(1), t(": React.FC"), i(2), t(" = ("), i(3), t(") => {"),
+		t({"", "\t"}), t("return ("),
+		t({"", "\t);"}),
+		t({"", "}"}),
+		t({"", "export default "}), i(4), t(";")
 	})
 });
 
