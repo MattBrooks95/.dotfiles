@@ -59,7 +59,7 @@ ls.add_snippets("typescript", {
 --	return (
 --	);
 --}
-export default MyComponent;
+--export default MyComponent;
 ls.add_snippets("typescriptreact", {
 	s("reactc", {
 		t("import React from \"react\";"),
