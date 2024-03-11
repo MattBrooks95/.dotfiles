@@ -184,6 +184,7 @@ local servers = {
 	-- 'svelte', -- npm install -g svelte-language-server
 	-- 'elmls',
 	'rust_analyzer',
+	-- for Rescript https://rescript-lang.org/
 }
 
 local lspConfig = require('lspconfig')
@@ -194,6 +195,10 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	}
 end
+
+--rescript
+lspConfig.rescriptls.setup{}
+
 -- need to set some params for the haskell language server
 lspConfig['hls'].setup {
 	capabilities = capabilities,
