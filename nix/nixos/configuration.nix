@@ -80,7 +80,7 @@
   users.users.motoko = {
     isNormalUser = true;
     description = "Matthew Brooks";
-    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "video" "docker" ];
   };
 
   # Allow unfree packages
