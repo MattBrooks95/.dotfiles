@@ -131,7 +131,7 @@ endif
 --TODO Neovim 7.0+ has an api to do autocmds in lua
 --vim.api.nvim_exec("autocmd vimenter * ++nested colorscheme everforest", {});
 vim.api.nvim_create_autocmd(
-	{"VimEnter"}, {command = "colorscheme tokyonight-moon"}
+	{"VimEnter"}, {command = "colorscheme dracula"}
 );
 
 --blinking cursor
@@ -184,7 +184,7 @@ local servers = {
 	-- 'svelte', -- npm install -g svelte-language-server
 	-- 'elmls',
 	'rust_analyzer',
-	-- for Rescript https://rescript-lang.org/
+	'rescriptls'
 }
 
 local lspConfig = require('lspconfig')
@@ -196,8 +196,8 @@ for _, lsp in ipairs(servers) do
 	}
 end
 
---rescript
-lspConfig.rescriptls.setup{}
+-- turn this on to debug LSP
+-- vim.lsp.set_log_level('debug');
 
 -- need to set some params for the haskell language server
 lspConfig['hls'].setup {
