@@ -171,14 +171,15 @@
         "plenary": "plenary",
         "telescope": "telescope",
         "tokyonight": "tokyonight",
-        "vim-fugitive": "vim-fugitive"
+        "vim-fugitive": "vim-fugitive",
+        "vim-rescript": "vim-rescript"
       },
       "locked": {
-        "lastModified": 1709367669,
-        "narHash": "sha256-fi7p3OzqlYc2A1R8etulYd0zDlNKVosY/WCrISUTRII=",
+        "lastModified": 1711800713,
+        "narHash": "sha256-nc5kFrEwZkr3CdttOwtd9iB5F5IFA1K8muv6Hc+a9p4=",
         "owner": "MattBrooks95",
         "repo": "neovim-flake",
-        "rev": "e947e7e56b72b572477b32cddffb4a2a85a25d07",
+        "rev": "f3e4f198625fc3c0e700e2f0f6cab909d8853967",
         "type": "github"
       },
       "original": {
@@ -253,16 +254,16 @@
     "nvim-lspconfig": {
       "flake": false,
       "locked": {
-        "lastModified": 1671465698,
-        "narHash": "sha256-yYFAqT4XaImry/JUB34GMp60llHWkmTCZl2hdGR148U=",
+        "lastModified": 1701687137,
+        "narHash": "sha256-qFjFofA2LoD4yRfx4KGfSCpR3mDkpFaagcm+TVNPqco=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "22c87d6f48c4fb1daf33476450d0b14a64230809",
+        "rev": "cf3dd4a290084a868fac0e2e876039321d57111c",
         "type": "github"
       },
       "original": {
         "owner": "neovim",
-        "ref": "v0.1.4",
+        "ref": "v0.1.7",
         "repo": "nvim-lspconfig",
         "type": "github"
       }
@@ -370,6 +371,22 @@
         "owner": "tpope",
         "ref": "v3.7",
         "repo": "vim-fugitive",
+        "type": "github"
+      }
+    },
+    "vim-rescript": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701197410,
+        "narHash": "sha256-JpEO1Zb+mm9dJISriticFmtPeVwZGpUAFv18wV6/dIg=",
+        "owner": "rescript-lang",
+        "repo": "vim-rescript",
+        "rev": "2065f4e1d319ffd4ff7046879f270ebbadda873e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rescript-lang",
+        "repo": "vim-rescript",
         "type": "github"
       }
     }
