@@ -164,6 +164,9 @@ require("nvim_telescope_setup")
 --tree sitter setup
 require("nvim_tree_sitter_setup")
 
+-- lualine status bar
+require("lualine_setup")
+
 --" clangd for C++, tsserver for typescript
 --" I copied this from https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 --" I have no idea what is going on
