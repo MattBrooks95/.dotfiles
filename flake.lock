@@ -175,11 +175,11 @@
         "vim-rescript": "vim-rescript"
       },
       "locked": {
-        "lastModified": 1711800713,
-        "narHash": "sha256-nc5kFrEwZkr3CdttOwtd9iB5F5IFA1K8muv6Hc+a9p4=",
+        "lastModified": 1713077776,
+        "narHash": "sha256-ZJ9AjX9xblzSYIxLEibOt/Bpt11utP2i8qfEYBIuwzs=",
         "owner": "MattBrooks95",
         "repo": "neovim-flake",
-        "rev": "f3e4f198625fc3c0e700e2f0f6cab909d8853967",
+        "rev": "de9db387cf8c8b9e764e9599fa25a8fc672d4d3c",
         "type": "github"
       },
       "original": {
