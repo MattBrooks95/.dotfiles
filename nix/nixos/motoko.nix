@@ -10,6 +10,7 @@
     ripgrep
     tmux
     alacritty
+    kitty
     git
     nitrogen
     xmobar
@@ -47,6 +48,10 @@
   };
   xdg.configFile.alacritty = {
     source = ../../alacritty;
+    recursive = true;
+  };
+  xdg.configFile.kitty = {
+    source = ../../kitty;
     recursive = true;
   };
 
