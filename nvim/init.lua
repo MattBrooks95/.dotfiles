@@ -11,8 +11,8 @@ vim.opt.colorcolumn = {80, 120}
 vim.opt.wrap = false
 
 --tabbing and white space
---TODO you will need to figure out a way to dynamically switch between
---spaces and tabs based on the project you're in.
+--use editorConfig to set this on a per-project basis
+--use the filetype plugin to override this for specific file types, like Haskell or Python, which unfortunately require spaces
 vim.opt.expandtab = false
 vim.opt.list = false
 vim.opt.listchars = { space="␣", tab="⏟⏟" }
