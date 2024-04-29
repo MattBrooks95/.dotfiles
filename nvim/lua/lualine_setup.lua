@@ -3,6 +3,11 @@
 -- what you think it should be doing
 require("lualine").setup({
 	sections = {
+		lualine_c = {
+				{'filename',
+						path = 1
+				}
+		},
 		lualine_b = {
 			'branch',
 			'diff',
