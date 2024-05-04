@@ -18,6 +18,7 @@
     haskell-language-server
     niv
     direnv
+    # TODO get rid of live-server, you haven't needed it for a long time
     nodePackages."live-server"
     nodePackages."typescript"
     nodePackages."typescript-language-server"
@@ -31,36 +32,36 @@
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
   xdg.configFile.nvim = {
-    source = ../../nvim;
+    source = ./nvim;
     recursive = true;
   };
   xdg.configFile.tmux = {
-    source = ../../tmux;
+    source = ./tmux;
     recursive = true;
   };
-  home.file."./.xmonad/xmonad.hs".source = ../../xmonad/xmonad.hs;
+  home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
   # I guess Xmonad wasn't reading the xdg file path, so I had to put the
   # config file at ./.xmonad/xmonad.hs
   #it also wasn't recompiling it so I had to force it to recompile with super+q
   xdg.configFile.xmobar = {
-    source = ../../xmobar;
+    source = ./xmobar;
     recursive = true;
   };
   xdg.configFile.alacritty = {
-    source = ../../alacritty;
+    source = ./alacritty;
     recursive = true;
   };
   xdg.configFile.kitty = {
-    source = ../../kitty;
+    source = ./kitty;
     recursive = true;
   };
 
-  home.file.".xprofile".source = ../../.xprofile;
-  home.file.".xinitrc".source = ../../.xinitrc;
+  home.file.".xprofile".source = ./.xprofile;
+  home.file.".xinitrc".source = ./.xinitrc;
 
-  home.file.".bashrc".text = import ../bash.nix;
-  home.file.".bash_profile".text = import ../bash_profile.nix;
-  home.file.".bash_aliases".text = import ../bash_aliases.nix;
+  home.file.".bashrc".text = import ./bash/bash.nix;
+  home.file.".bash_profile".text = import ./bash/bash_profile.nix;
+  home.file.".bash_aliases".text = import ./bash/bash_aliases.nix;
 
   i18n = {
     inputMethod = {
