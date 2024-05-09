@@ -59,6 +59,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.pulseaudio = true;
+
   # TODO dedup with Lemur config, I think every NixOs system I will have will want flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

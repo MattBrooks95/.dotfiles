@@ -28,6 +28,7 @@
     tree
     fd
     cockatrice
+    runelite
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
