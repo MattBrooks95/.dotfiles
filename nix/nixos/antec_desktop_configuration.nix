@@ -81,6 +81,9 @@
     #neovim-flake.packages.default <- did not work
     #neovim-flake.defaultPackage <- did not work
     inputs.neovim-flake.packages.${system}.default
+    #TODO I'm surprised this isn't in my laptop's nix config, yet pasting works there
+    #install xclip, for copy and pasting to Neovim
+    xclip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
