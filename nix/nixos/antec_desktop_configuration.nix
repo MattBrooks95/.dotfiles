@@ -104,6 +104,13 @@
       enableConfiguredRecompile = true;
     };
   };
+
+  # TODO de-duplicate between tower and laptop configs
+  # udev rules for headsetcontrol
+  services.udev.packages = with pkgs; [
+    headsetcontrol
+  ];
+
   # TODO de-dupe with laptop configuration
   virtualisation.docker.enable = true;
 

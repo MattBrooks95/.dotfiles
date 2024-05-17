@@ -142,6 +142,11 @@
 
   services.gnome.gnome-keyring.enable = true;
 
+  # udev rules for headsetcontrol
+  services.udev.packages = with pkgs; [
+    headsetcontrol
+  ];
+
   virtualisation.docker.enable = true;
 
   # Enable the OpenSSH daemon.
