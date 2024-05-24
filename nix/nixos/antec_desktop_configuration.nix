@@ -115,7 +115,7 @@
   ];
 
   # TODO de-dupe with laptop configuration
-  virtualisation.docker.enable = true;
+  virtualisation = import ./containerconfiguration.nix;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
