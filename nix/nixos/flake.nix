@@ -34,12 +34,26 @@
         #list of nix modules that build up the system configuration
         modules = [
           { _module.args = { inherit inputs; }; }
-          ./nix/nixos/configuration.nix
+          ./configuration.nix
           home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.motoko = import ./nix/nixos/motoko.nix;
+              home-manager.users.motoko = import ./motoko.nix;
+            }
+        ];
+      };
+      antec = lib.nixosSystem {
+        inherit system;
+        #list of nix modules that build up the system configuration
+        modules = [
+          { _module.args = { inherit inputs; }; }
+          ./antec_desktop_configuration.nix
+          home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.motoko = import ./motoko.nix;
             }
         ];
       };
