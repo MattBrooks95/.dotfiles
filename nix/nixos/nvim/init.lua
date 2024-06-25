@@ -186,6 +186,9 @@ local windowMappings = {
 		{ "<leader>wk", "<cmd>:wincmd k<CR>" },
 		{ "<leader>wh", "<cmd>:wincmd h<CR>" },
 		{ "<leader>wl", "<cmd>:wincmd l<CR>" },
+
+		--TODO move these to a file windowMappings.lua
+		--TODO add in a binding to jump to window by number, and make lualine show the window number
 }
 
 setKeyMaps(windowMappings, "n", { noremap=true, silent=true })
