@@ -69,8 +69,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "dvorak";
+    xkb.layout = "us";
+    xkb.variant = "dvorak";
   };
 
   # Configure console keymap
@@ -100,7 +100,6 @@
     git
     docker-compose
     fcitx5
-    zsa-udev-rules
     ntfs3g
     pavucontrol
     ncurses
@@ -119,7 +118,7 @@
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "gtk2";
+    pinentryPackage = pkgs.gtk2;
   #   enableSSHSupport = true;
   };
 
@@ -135,12 +134,19 @@
       config = builtins.readFile ./xmonad/xmonad.hs;
       enableConfiguredRecompile = true;
     };
-    libinput.enable = true;# will this fix the touchpad not working after reboot sometimes? -> no
   };
+  # will this fix the touchpad not working after reboot sometimes? -> no
+  # issue seemed to be fixed by some linux version update along the way
+  services.libinput.enable = true;
   # compositor
   services.picom.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
+
+  services.udev.extraRules = let zsaRules = builtins.readFile ./zsa_udev.txt; in
+    ''
+    ${zsaRules}
+    '';
 
   virtualisation.docker.enable = true;
 

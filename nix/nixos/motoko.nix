@@ -23,11 +23,13 @@
     nodePackages."typescript"
     nodePackages."typescript-language-server"
     flameshot
-    wally-cli
     dmenu
     tree
     fd
     cockatrice
+    # for ZSA keyboard configuration
+    wally-cli
+    keymapp
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
