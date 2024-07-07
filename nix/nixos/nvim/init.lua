@@ -1,3 +1,5 @@
+require('lib');
+
 vim.g.mapleader = " "
 
 require("sets")
@@ -12,27 +14,7 @@ vim.opt.signcolumn = "yes"
 --" of the screen
 vim.opt.statusline = "%<%f\\ %{FugitiveStatusline()} hex:%B dec:%b %h%m%r%=%-14.(%l,%c%V%)\\ %P"
 
---set keymaps in a loop
-function setKeyMaps(gitMappings, mode, options)
-	for _, gitMapping in ipairs(gitMappings) do 
-		vim.api.nvim_set_keymap(
-			mode,
-			gitMapping[1],
-			gitMapping[2],
-			options
-		)
-	end
-end
-
-local gitMappings = {
-	{ "<leader>gs", ":G<CR>" },
-	{ "<leader>gc", ":G commit<CR>" },
-	{ "<leader>gp", ":G push<CR>" },
-	{ "<leader>gd", ":G diff<CR>" },
-	{ "<leader>gb", ":G blame<CR>" },
-}
-
-setKeyMaps(gitMappings, "n", {})
+setKeyMaps(require("git_mappings"), "n", {})
 
 --TODO this is the cheating way of porting something from viml to lua
 vim.cmd([[
