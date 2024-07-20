@@ -1,3 +1,5 @@
+require('lib');
+
 vim.g.mapleader = " "
 
 require("sets")
@@ -12,27 +14,7 @@ vim.opt.signcolumn = "yes"
 --" of the screen
 vim.opt.statusline = "%<%f\\ %{FugitiveStatusline()} hex:%B dec:%b %h%m%r%=%-14.(%l,%c%V%)\\ %P"
 
---set keymaps in a loop
-function setKeyMaps(gitMappings, mode, options)
-	for _, gitMapping in ipairs(gitMappings) do 
-		vim.api.nvim_set_keymap(
-			mode,
-			gitMapping[1],
-			gitMapping[2],
-			options
-		)
-	end
-end
-
-local gitMappings = {
-	{ "<leader>gs", ":G<CR>" },
-	{ "<leader>gc", ":G commit<CR>" },
-	{ "<leader>gp", ":G push<CR>" },
-	{ "<leader>gd", ":G diff<CR>" },
-	{ "<leader>gb", ":G blame<CR>" },
-}
-
-setKeyMaps(gitMappings, "n", {})
+setKeyMaps(require("git_mappings"), "n", {})
 
 --TODO this is the cheating way of porting something from viml to lua
 vim.cmd([[
@@ -43,47 +25,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 ]])
 
---TODO this is the cheating way of porting something from viml to lua
---vim.cmd([[
---call plug#begin('~/.config/nvim/plugged')
---"fuzzy finder
---Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
---Plug 'junegunn/fzf.vim'
---"theme
---"Plug 'morhetz/gruvbox'
---Plug 'sainnhe/everforest'
---"Collection of configurations for built-in LSP client
---Plug 'neovim/nvim-lspconfig'
---" allows customization of nvm cmp menu
---Plug 'onsails/lspkind-nvim'
---
---"completion####################################
---"https://github.com/neovim/nvim-lspconfig/wiki/Snippets
---"autocompletion plugin
---Plug 'hrsh7th/nvim-cmp'
---"LSP source for nvim-cmp
---Plug 'hrsh7th/cmp-nvim-lsp'
---" buffer source
---Plug 'hrsh7th/cmp-buffer'
---"snippets source for nvim-cmp
---Plug 'saadparwaiz1/cmp_luasnip'
---"snippets plugin
---Plug 'L3MON4D3/LuaSnip'
---"completion####################################
---
---" telescope
---" a native sorter was recommended for better performance
---Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
---Plug 'nvim-lua/plenary.nvim'
---Plug 'nvim-telescope/telescope.nvim'
---
---" git
---Plug 'tpope/vim-fugitive'
---" tree-sitter
---Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
---call plug#end()
---]])
---
 --"setup theme
 --" autocmd vimenter * ++nested colorscheme gruvbox
 --TODO Neovim 7.0+ has an api to do autocmds in lua
@@ -210,3 +151,33 @@ local treeSitterMappings = {
 
 setKeyMaps(treeSitterMappings, "n", { noremap=true, silent=true })
 
+-- window mappings
+local windowMappings = {
+		-- open a window from a horizontal split (split horizontally so that the windows are stacked vertically)
+		{ "<leader>ws", "<cmd>:split<CR>" },
+		-- open a window from a vertical split
+		{ "<leader>wv", "<cmd>:vsplit<CR>" },
+		-- close all windows except for the window that the cursor is in
+		{ "<leader>wo", "<cmd>:only<CR>" },
+		-- close the currently selected window
+		{ "<leader>wc", "<cmd>:close<CR>" },
+
+		-- use wincmd to alias cursor window movements, to avoid needing to type CTRL-w
+		-- it's so nice
+		{ "<leader>wj", "<cmd>:wincmd j<CR>" },
+		{ "<leader>wk", "<cmd>:wincmd k<CR>" },
+		{ "<leader>wh", "<cmd>:wincmd h<CR>" },
+		{ "<leader>wl", "<cmd>:wincmd l<CR>" },
+
+		--TODO move these to a file windowMappings.lua
+		--TODO add in a binding to jump to window by number, and make lualine show the window number
+}
+
+setKeyMaps(windowMappings, "n", { noremap=true, silent=true })
+
+local fileOperations = {
+		-- save file without needing to type ':'
+		{ "<leader>ss", "<cmd>:w<CR>" },
+}
+
+setKeyMaps(fileOperations, "n", { noremap=true, silent=true })
