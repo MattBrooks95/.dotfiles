@@ -84,7 +84,7 @@
     #TODO I'm surprised this isn't in my laptop's nix config, yet pasting works there
     #install xclip, for copy and pasting to Neovim
     xclip
-  ];
+  ] ++ import ./commonpackages.nix pkgs;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -93,6 +93,8 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.steam.enable = true;
 
   # List services that you want to enable:
   services.xserver = {
@@ -113,6 +115,21 @@
   services.udev.packages = with pkgs; [
     headsetcontrol
   ];
+
+  hardware.opengl ={
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+  services.xserver.videoDrivers = ["nvidia"];
+  # gpu
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # TODO de-dupe with laptop configuration
   virtualisation = import ./containerconfiguration.nix;
