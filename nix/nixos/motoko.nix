@@ -9,17 +9,12 @@
     htop
     ripgrep
     tmux
-    alacritty
     kitty
     git
-    nitrogen
     xmobar
-    stack
     haskell-language-server
     niv
     direnv
-    # TODO get rid of live-server, you haven't needed it for a long time
-    nodePackages."live-server"
     nodePackages."typescript"
     nodePackages."typescript-language-server"
     flameshot

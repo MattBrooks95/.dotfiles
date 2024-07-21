@@ -12,7 +12,7 @@ import XMonad.Hooks.EwmhDesktops
 -- overwrite parts of the default config, and specify keybindings/remappings
 myConfig = def
   { modMask = mod4Mask -- specify super key as mod key
-  , terminal = "alacritty"
+  , terminal = "kitty"
   }
   `additionalKeysP`
   [ ("M-S-b", spawn "firefox")
