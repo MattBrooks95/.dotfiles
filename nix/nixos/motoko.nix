@@ -27,6 +27,9 @@
     # for ZSA keyboard configuration
     wally-cli
     keymapp
+    # copy into X clipboard from terminal
+    xclip
+    pass
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/

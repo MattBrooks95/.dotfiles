@@ -103,7 +103,7 @@
     ntfs3g
     pavucontrol
     ncurses
-    gtk2
+    pinentry-tty
     system76-keyboard-configurator #customize keys on lemur pro
     #neovim-flake <- did not work
     #neovim-flake.packages.default <- did not work
@@ -118,7 +118,7 @@
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.gtk2;
+    pinentryPackage = pkgs.pinentry-tty;
   #   enableSSHSupport = true;
   };
 
