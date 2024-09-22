@@ -21,7 +21,8 @@ require('nvim-treesitter.configs').setup {
 			"haskell",
 			"javascript",
 			"typescript",
-			"rescript",
+			-- broken grammar, causes errors when I open a rescript file
+			-- "rescript",
 			"lua",
 			"c",
 			"rust",
