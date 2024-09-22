@@ -17,9 +17,20 @@ vim.opt.runtimepath:append(parser_install_dir)
 require('nvim-treesitter.install').compilers = { 'gcc' }
 
 require('nvim-treesitter.configs').setup {
-	ensure_installed = "all",
+	ensure_installed = {
+			"haskell",
+			"javascript",
+			"typescript",
+			"rescript",
+			"lua",
+			"c",
+			"rust",
+			"ocaml",
+			"python",
+			"elixir"
+	},
 	sync_install = false,
-	ignore_install = {"javascript"},
+	-- ignore_install = {"javascript"},
 	highlight = {
 		enable = true
 	},
