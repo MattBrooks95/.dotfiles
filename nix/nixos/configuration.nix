@@ -10,8 +10,11 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
   hardware.system76.kernel-modules.enable = true;
   hardware.system76.enableAll = true;
+  services.power-profiles-daemon.enable = false;
+
   hardware.bluetooth.enable = true;
   # so that we have sound
   hardware.pulseaudio.enable = true;
