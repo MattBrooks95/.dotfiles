@@ -74,7 +74,7 @@
   users.users.motoko = {
     isNormalUser = true;
     description = "Matthew Brooks";
-    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "video" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "video" "docker" "adbusers"];
   };
 
   # Allow unfree packages
@@ -107,13 +107,14 @@
 
   programs.light.enable = true;
 
+  programs.adb.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-tty;
-  #   enableSSHSupport = true;
   };
 
   # List services that you want to enable:
@@ -146,6 +147,7 @@
   # udev rules for headsetcontrol
   services.udev.packages = with pkgs; [
     headsetcontrol
+    android-udev-rules
   ];
   services.udev.extraRules = let zsaRules = builtins.readFile ./zsa_udev.txt; in
     ''
@@ -156,6 +158,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  programs.ssh.startAgent = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
