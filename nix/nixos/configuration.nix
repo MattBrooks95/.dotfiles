@@ -67,12 +67,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "dvorak";
-  };
-
   # Configure console keymap
   console.keyMap = "dvorak";
 
@@ -133,6 +127,12 @@
       enableContribAndExtras = true; #necessary for things like EZConfig
       config = builtins.readFile ./xmonad/xmonad.hs;
       enableConfiguredRecompile = true;
+    };
+
+    # Configure keymap in X11
+    xkb = {
+      layout = "us";
+      variant = "dvorak";
     };
   };
   # will this fix the touchpad not working after reboot sometimes? -> no

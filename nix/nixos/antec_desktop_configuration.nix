@@ -42,14 +42,6 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.motoko = {
     isNormalUser = true;
@@ -109,6 +101,11 @@
       enableContribAndExtras = true; #necessary for things like EZConfig
       config = builtins.readFile ./xmonad/xmonad.hs;
       enableConfiguredRecompile = true;
+    };
+    # Configure keymap in X11
+    xkb = {
+      layout = "us";
+      variant = "";
     };
   };
 
