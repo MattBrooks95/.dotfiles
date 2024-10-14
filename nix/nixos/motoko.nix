@@ -41,6 +41,10 @@
     source = ./tmux;
     recursive = true;
   };
+  xdg.configFile.fcitx5 = {
+    source = ./fcitx5;
+    recursive = true;
+  };
   home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
   # I guess Xmonad wasn't reading the xdg file path, so I had to put the
   # config file at ./.xmonad/xmonad.hs
