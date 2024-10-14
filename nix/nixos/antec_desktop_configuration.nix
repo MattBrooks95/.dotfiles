@@ -90,6 +90,11 @@
 
   programs.steam.enable = true;
 
+  programs.seahorse.enable = true;
+  services.gnome.gnome-keyring = {
+    enable = true;
+  };
+
   # List services that you want to enable:
   services.xserver = {
     enable = true;
