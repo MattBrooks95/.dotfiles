@@ -37,14 +37,12 @@
     source = ./nvim;
     recursive = true;
   };
+
   xdg.configFile.tmux = {
     source = ./tmux;
     recursive = true;
   };
-  xdg.configFile.fcitx5 = {
-    source = ./fcitx5;
-    recursive = true;
-  };
+
   home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
   # I guess Xmonad wasn't reading the xdg file path, so I had to put the
   # config file at ./.xmonad/xmonad.hs
@@ -53,14 +51,26 @@
     source = ./xmobar;
     recursive = true;
   };
+
   xdg.configFile.alacritty = {
     source = ./alacritty;
     recursive = true;
   };
+
   xdg.configFile.kitty = {
     source = ./kitty;
     recursive = true;
   };
+
+  # I think fcitx5 is working on my laptop because I ran the gui tool and did the configuration
+  #I've tried copying those files into the ~/.config/fcitx5 folder using my nix
+  #setup but the 'profile' file is overwritten by something when I signin to
+  #the graphical environment
+  #the 'settings' for the fcitx5 configuration doesn't work with home-manager, either =(
+  #xdg.configFile.fcitx5 = {
+  #  source = ./fcitx5;
+  #  recursive = true;
+  #};
 
   home.file.".xprofile".source = ./.xprofile;
   home.file.".xinitrc".source = ./.xinitrc;
