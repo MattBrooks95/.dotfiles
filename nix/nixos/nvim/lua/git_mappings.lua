@@ -4,6 +4,7 @@ local mappings = {
 	{ "<leader>gp", ":G push<CR>" },
 	{ "<leader>gd", ":G diff<CR>" },
 	{ "<leader>gb", ":G blame<CR>" },
+	{ "<leader>gl", ":G log --graph<CR>" },
 }
 
 return mappings
