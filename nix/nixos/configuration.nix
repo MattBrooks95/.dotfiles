@@ -37,6 +37,8 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  # set a lower, maximum # of derivation boot files on the boot partition
+  # to prevent running out of space and becoming unable to nixos-rebuild
   boot.loader.systemd-boot.configurationLimit = 30;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
