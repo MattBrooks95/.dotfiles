@@ -11,9 +11,13 @@
       ./hardware-configuration.nix
     ];
 
-  hardware.system76.kernel-modules.enable = true;
-  hardware.system76.enableAll = true;
-  services.power-profiles-daemon.enable = false;
+  hardware.system76 = {
+    kernel-modules.enable = false;
+    power-daemon.enable = true;
+    firmware-daemon.enable = true;
+  };
+
+  # services.power-profiles-daemon.enable = false;
 
   hardware.bluetooth.enable = true;
   # so that we have sound
@@ -33,6 +37,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 30;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   #I needed this kernel for things on my lemur pro to work properly
