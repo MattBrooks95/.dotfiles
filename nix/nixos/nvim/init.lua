@@ -25,6 +25,10 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 ]])
 
+--color setup needs to occur before 'colorscheme' is set, in order for changes
+--to take effect
+require("colors_setup")
+
 --"setup theme
 --" autocmd vimenter * ++nested colorscheme gruvbox
 --TODO Neovim 7.0+ has an api to do autocmds in lua
