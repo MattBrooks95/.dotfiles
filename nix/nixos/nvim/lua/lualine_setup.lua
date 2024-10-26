@@ -2,6 +2,9 @@
 -- lualine configuration to the screen, so you can debug why the bar isn't doing
 -- what you think it should be doing
 require("lualine").setup({
+	options = {
+		theme = 'dracula-nvim'
+	},
 	sections = {
 		lualine_c = {
 				{'filename',
