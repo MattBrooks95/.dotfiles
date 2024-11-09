@@ -12,7 +12,9 @@ import XMonad.Hooks.EwmhDesktops
 -- overwrite parts of the default config, and specify keybindings/remappings
 myConfig = def
   { modMask = mod4Mask -- specify super key as mod key
-  , terminal = "kitty"
+  -- need to tell Kitty to use IBUS, or else the fcitx5 hotkeys
+  -- won't activate the mozc IME
+  , terminal = "GLFW_IM_MODULE=ibus kitty"
   }
   `additionalKeysP`
   [ ("M-S-b", spawn "firefox")
