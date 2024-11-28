@@ -67,7 +67,7 @@ ls.add_snippets("typescriptreact", {
 		t({"", "\t"}), t("return ("),
 		t({"", "\t);"}),
 		t({"", "}"}),
-		t({"", "export default "}), f(getNodeText, {1}), t(";")
+		t({"", "", "export default "}), f(getNodeText, {1}), t(";")
 	})
 })
 
