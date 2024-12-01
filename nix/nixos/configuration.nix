@@ -113,7 +113,7 @@
     #neovim-flake.packages.default <- did not work
     #neovim-flake.defaultPackage <- did not work
     inputs.neovim-flake.packages.${system}.default
-  ];
+  ] ++ import ./commonpackages.nix pkgs;
 
   programs.light.enable = true;
 
