@@ -75,9 +75,9 @@
   home.file.".xprofile".source = ./.xprofile;
   home.file.".xinitrc".source = ./.xinitrc;
 
-  home.file.".bashrc".text = import ./bash/bash.nix;
-  home.file.".bash_profile".text = import ./bash/bash_profile.nix;
-  home.file.".bash_aliases".text = import ./bash/bash_aliases.nix;
+  home.file.".bashrc".source = ./bash/.bashrc;
+  home.file.".bash_profile".source = ./bash/.bash_profile;
+  home.file.".bash_aliases".source = ./bash/.bash_aliases;
 
   i18n = {
     inputMethod = {
