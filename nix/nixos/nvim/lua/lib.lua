@@ -1,5 +1,5 @@
-function setKeyMaps(gitMappings, mode, options)
-	for _, gitMapping in ipairs(gitMappings) do 
+function setKeyMaps(mappings, mode, options)
+	for _, gitMapping in ipairs(mappings) do 
 		vim.api.nvim_set_keymap(
 			mode,
 			gitMapping[1],

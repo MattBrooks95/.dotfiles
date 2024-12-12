@@ -7,4 +7,8 @@ local mappings = {
 	{ "<leader>gl", ":G log --graph<CR>" },
 }
 
-return mappings
+local module = {
+		mappings = mappings
+}
+
+return module
