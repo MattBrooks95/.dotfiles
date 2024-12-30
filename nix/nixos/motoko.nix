@@ -28,8 +28,10 @@
     wally-cli
     keymapp
     # copy into X clipboard from terminal
-    xclip
+    #xclip
     pass
+    # [configurable wallpaper cycler](https://github.com/danyspin97/wpaperd)
+    wpaperd
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -43,19 +45,34 @@
     recursive = true;
   };
 
-  home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
-  # I guess Xmonad wasn't reading the xdg file path, so I had to put the
-  # config file at ./.xmonad/xmonad.hs
-  #it also wasn't recompiling it so I had to force it to recompile with super+q
-  xdg.configFile.xmobar = {
-    source = ./xmobar;
+  xdg.configFile.hypr = {
+    source = ./hypr;
     recursive = true;
   };
 
-  xdg.configFile.alacritty = {
-    source = ./alacritty;
+  xdg.configFile.waybar = {
+    source = ./waybar;
     recursive = true;
   };
+
+  xdg.configFile.wpaperd = {
+    source = ./wpaperd;
+    recursive = true;
+  };
+
+  #home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
+  # I guess Xmonad wasn't reading the xdg file path, so I had to put the
+  # config file at ./.xmonad/xmonad.hs
+  #it also wasn't recompiling it so I had to force it to recompile with super+q
+  #xdg.configFile.xmobar = {
+  #  source = ./xmobar;
+  #  recursive = true;
+  #};
+
+  #xdg.configFile.alacritty = {
+  #  source = ./alacritty;
+  #  recursive = true;
+  #};
 
   xdg.configFile.kitty = {
     source = ./kitty;
