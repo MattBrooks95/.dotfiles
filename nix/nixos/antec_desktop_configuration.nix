@@ -12,6 +12,8 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.enable = true;
   # set a lower, maximum # of derivation boot files on the boot partition
   # to prevent running out of space and becoming unable to nixos-rebuild
   boot.loader.systemd-boot.configurationLimit = 30;
@@ -49,7 +51,7 @@
   users.users.motoko = {
     isNormalUser = true;
     description = "matt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
   };
 
@@ -57,6 +59,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.pulseaudio = true;
+  hardware.pulseaudio.enable = true;
 
   # TODO dedup with Lemur config, I think every NixOs system I will have will want flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -98,7 +101,18 @@
     enable = true;
   };
 
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm =  {
+    enable = true;
+    wayland = {
+      enable = true;
+    };
+    settings = {
+      Wayland = {
+        EnableHiDPI = "0";
+      };
+    };
+  };
+
   programs.xwayland.enable = true;
   programs.waybar.enable = true;
   programs.hyprland = {
@@ -107,7 +121,6 @@
   };
   services.xserver = {
     xkb.layout = "us";
-    xkb.variant = "dvorak";
   };
   # List services that you want to enable:
   # services.xserver = {
