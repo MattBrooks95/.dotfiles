@@ -98,24 +98,35 @@
     enable = true;
   };
 
-  # List services that you want to enable:
-  services.xserver = {
+  services.displayManager.sddm.wayland.enable = true;
+  programs.xwayland.enable = true;
+  programs.waybar.enable = true;
+  programs.hyprland = {
     enable = true;
-    displayManager = {
-      lightdm.enable = true;
-    };
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true; #necessary for things like EZConfig
-      config = builtins.readFile ./xmonad/xmonad.hs;
-      enableConfiguredRecompile = true;
-    };
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
+    xwayland.enable = true;
   };
+  services.xserver = {
+    xkb.layout = "us";
+    xkb.variant = "dvorak";
+  };
+  # List services that you want to enable:
+  # services.xserver = {
+  #   enable = true;
+  #   displayManager = {
+  #     lightdm.enable = true;
+  #   };
+  #   windowManager.xmonad = {
+  #     enable = true;
+  #     enableContribAndExtras = true; #necessary for things like EZConfig
+  #     config = builtins.readFile ./xmonad/xmonad.hs;
+  #     enableConfiguredRecompile = true;
+  #   };
+  #   # Configure keymap in X11
+  #   xkb = {
+  #     layout = "us";
+  #     variant = "";
+  #   };
+  # };
 
   # TODO de-duplicate between tower and laptop configs
   # udev rules for headsetcontrol
@@ -128,15 +139,15 @@
     driSupport = true;
     driSupport32Bit = true;
   };
-  services.xserver.videoDrivers = ["nvidia"];
+  # services.xserver.videoDrivers = ["nvidia"];
   # gpu
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  #hardware.nvidia = {
+  #  modesetting.enable = true;
+  #  powerManagement.enable = true;
+  #  open = false;
+  #  nvidiaSettings = true;
+  #  package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #};
 
   # TODO de-dupe with laptop configuration
   virtualisation = import ./containerconfiguration.nix;
