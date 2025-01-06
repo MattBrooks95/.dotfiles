@@ -59,6 +59,9 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.pulseaudio = true;
+  # TODO de-dupe, this can be shared across laptop and desktop
+  # note that since this doesn't exist, and the waybar config would try to
+  # access pulseaudio, this was stopping waybar from working
   hardware.pulseaudio.enable = true;
 
   # TODO dedup with Lemur config, I think every NixOs system I will have will want flakes
