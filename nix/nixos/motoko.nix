@@ -84,10 +84,10 @@
   #setup but the 'profile' file is overwritten by something when I signin to
   #the graphical environment
   #the 'settings' for the fcitx5 configuration doesn't work with home-manager, either =(
-  #xdg.configFile.fcitx5 = {
-  #  source = ./fcitx5;
-  #  recursive = true;
-  #};
+  xdg.configFile.fcitx5 = {
+    source = ./fcitx5;
+    recursive = true;
+  };
 
   home.file.".xprofile".source = ./.xprofile;
   home.file.".xinitrc".source = ./.xinitrc;
