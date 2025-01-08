@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+hostname:{ config, pkgs, ... }:
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -45,10 +45,36 @@
     recursive = true;
   };
 
-  xdg.configFile.hypr = {
-    source = ./hypr;
-    recursive = true;
-  };
+  xdg.configFile."hypr/hyprland.conf" =
+    let
+      voyagerDevice = ''
+      device {
+        name = zsa-technology-labs-voyager
+        kb_layout = us
+        kb_variant =
+      }
+      '';
+      options = {
+        lemur = {
+          defaultInputKeyboardVariant = "dvorak";
+          additionalDevices = [
+            voyagerDevice
+          ];
+          startFcitx5 = true;
+        };
+        antec = {
+          defaultInputKeyboardVariant = "";
+          additionalDevices = [
+            voyagerDevice
+          ];
+          startFcitx5 = true;
+        };
+      };
+    in
+      {
+        text = import ./hypr/hypr_config.nix options."${hostname}";
+        recursive = false;
+      };
 
   xdg.configFile.waybar = {
     source = ./waybar;
