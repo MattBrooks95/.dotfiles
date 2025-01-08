@@ -188,9 +188,9 @@ misc {
 
 # https://wiki.hyprland.org/Configuring/Variables/#input
 input {
-    kb_layout = ${defaultInputKeyboardVariant}
+    kb_layout = us
 # TODO this should only be set for the antec desktop
-    kb_variant =
+    kb_variant = ${defaultInputKeyboardVariant}
     kb_model =
     kb_options =
     kb_rules =
@@ -224,7 +224,7 @@ device {
 # }
 
 ##### nix: list of additional devices #####
-${builtins.concatStringsSep "/" additionalDevices}
+${builtins.concatStringsSep "\n" additionalDevices}
 #####################################
 
 ###################
