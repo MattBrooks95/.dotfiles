@@ -59,6 +59,13 @@ hostname:{ config, pkgs, ... }:
           defaultInputKeyboardVariant = "dvorak";
           additionalDevices = [
             voyagerDevice
+            ''
+            device {
+              name = at-translated-set-2-keyboard
+              kb_layout = us
+              kb_variant = dvorak
+            }
+            ''
           ];
           startFcitx5 = true;
         };
