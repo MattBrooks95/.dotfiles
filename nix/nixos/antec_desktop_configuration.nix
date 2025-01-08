@@ -86,7 +86,10 @@
     inputs.neovim-flake.packages.${system}.default
     #TODO I'm surprised this isn't in my laptop's nix config, yet pasting works there
     #install xclip, for copy and pasting to Neovim
-    xclip
+    gtk4
+    wofi
+    dolphin
+    wl-clipboard
   ] ++ import ./commonpackages.nix pkgs;
 
   # Some programs need SUID wrappers, can be configured further or are
