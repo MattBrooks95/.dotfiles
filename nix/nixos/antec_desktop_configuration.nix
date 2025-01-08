@@ -12,6 +12,8 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.enable = true;
   # set a lower, maximum # of derivation boot files on the boot partition
   # to prevent running out of space and becoming unable to nixos-rebuild
   boot.loader.systemd-boot.configurationLimit = 30;
@@ -49,7 +51,7 @@
   users.users.motoko = {
     isNormalUser = true;
     description = "matt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
   };
 
@@ -57,6 +59,10 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.pulseaudio = true;
+  # TODO de-dupe, this can be shared across laptop and desktop
+  # note that since this doesn't exist, and the waybar config would try to
+  # access pulseaudio, this was stopping waybar from working
+  hardware.pulseaudio.enable = true;
 
   # TODO dedup with Lemur config, I think every NixOs system I will have will want flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -98,24 +104,45 @@
     enable = true;
   };
 
-  # List services that you want to enable:
-  services.xserver = {
+  services.displayManager.sddm =  {
     enable = true;
-    displayManager = {
-      lightdm.enable = true;
-    };
-    windowManager.xmonad = {
+    wayland = {
       enable = true;
-      enableContribAndExtras = true; #necessary for things like EZConfig
-      config = builtins.readFile ./xmonad/xmonad.hs;
-      enableConfiguredRecompile = true;
     };
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "";
+    settings = {
+      Wayland = {
+        EnableHiDPI = "0";
+      };
     };
   };
+
+  programs.xwayland.enable = true;
+  programs.waybar.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  services.xserver = {
+    xkb.layout = "us";
+  };
+  # List services that you want to enable:
+  # services.xserver = {
+  #   enable = true;
+  #   displayManager = {
+  #     lightdm.enable = true;
+  #   };
+  #   windowManager.xmonad = {
+  #     enable = true;
+  #     enableContribAndExtras = true; #necessary for things like EZConfig
+  #     config = builtins.readFile ./xmonad/xmonad.hs;
+  #     enableConfiguredRecompile = true;
+  #   };
+  #   # Configure keymap in X11
+  #   xkb = {
+  #     layout = "us";
+  #     variant = "";
+  #   };
+  # };
 
   # TODO de-duplicate between tower and laptop configs
   # udev rules for headsetcontrol
@@ -128,15 +155,15 @@
     driSupport = true;
     driSupport32Bit = true;
   };
-  services.xserver.videoDrivers = ["nvidia"];
+  # services.xserver.videoDrivers = ["nvidia"];
   # gpu
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  #hardware.nvidia = {
+  #  modesetting.enable = true;
+  #  powerManagement.enable = true;
+  #  open = false;
+  #  nvidiaSettings = true;
+  #  package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #};
 
   # TODO de-dupe with laptop configuration
   virtualisation = import ./containerconfiguration.nix;

@@ -39,7 +39,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.motoko = import ./motoko.nix;
+              home-manager.users.motoko = import ./motoko.nix "lemur";
             }
         ];
       };
@@ -53,7 +53,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.motoko = import ./motoko.nix;
+              home-manager.users.motoko = import ./motoko.nix "antec";
             }
         ];
       };

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+hostname:{ config, pkgs, ... }:
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -28,8 +28,10 @@
     wally-cli
     keymapp
     # copy into X clipboard from terminal
-    xclip
+    #xclip
     pass
+    # [configurable wallpaper cycler](https://github.com/danyspin97/wpaperd)
+    wpaperd
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -43,19 +45,60 @@
     recursive = true;
   };
 
-  home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
-  # I guess Xmonad wasn't reading the xdg file path, so I had to put the
-  # config file at ./.xmonad/xmonad.hs
-  #it also wasn't recompiling it so I had to force it to recompile with super+q
-  xdg.configFile.xmobar = {
-    source = ./xmobar;
+  xdg.configFile."hypr/hyprland.conf" =
+    let
+      voyagerDevice = ''
+      device {
+        name = zsa-technology-labs-voyager
+        kb_layout = us
+        kb_variant =
+      }
+      '';
+      options = {
+        lemur = {
+          defaultInputKeyboardVariant = "dvorak";
+          additionalDevices = [
+            voyagerDevice
+          ];
+          startFcitx5 = true;
+        };
+        antec = {
+          defaultInputKeyboardVariant = "";
+          additionalDevices = [
+            voyagerDevice
+          ];
+          startFcitx5 = true;
+        };
+      };
+    in
+      {
+        text = import ./hypr/hypr_config.nix options."${hostname}";
+        recursive = false;
+      };
+
+  xdg.configFile.waybar = {
+    source = ./waybar;
     recursive = true;
   };
 
-  xdg.configFile.alacritty = {
-    source = ./alacritty;
+  xdg.configFile.wpaperd = {
+    source = ./wpaperd;
     recursive = true;
   };
+
+  #home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
+  # I guess Xmonad wasn't reading the xdg file path, so I had to put the
+  # config file at ./.xmonad/xmonad.hs
+  #it also wasn't recompiling it so I had to force it to recompile with super+q
+  #xdg.configFile.xmobar = {
+  #  source = ./xmobar;
+  #  recursive = true;
+  #};
+
+  #xdg.configFile.alacritty = {
+  #  source = ./alacritty;
+  #  recursive = true;
+  #};
 
   xdg.configFile.kitty = {
     source = ./kitty;
@@ -67,10 +110,10 @@
   #setup but the 'profile' file is overwritten by something when I signin to
   #the graphical environment
   #the 'settings' for the fcitx5 configuration doesn't work with home-manager, either =(
-  #xdg.configFile.fcitx5 = {
-  #  source = ./fcitx5;
-  #  recursive = true;
-  #};
+  xdg.configFile.fcitx5 = {
+    source = ./fcitx5;
+    recursive = true;
+  };
 
   home.file.".xprofile".source = ./.xprofile;
   home.file.".xinitrc".source = ./.xinitrc;

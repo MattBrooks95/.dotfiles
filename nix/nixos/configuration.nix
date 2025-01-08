@@ -25,15 +25,15 @@
 
   #this seems to fix webgl performance and watching video streams perform much better
   #https://nixos.wiki/wiki/Accelerated_Video_Playback
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-       intel-media-driver
-       vaapiIntel
-       vaapiVdpau
-       libvdpau-va-gl
-    ];
-  };
+  #hardware.opengl = {
+  #  enable = true;
+  #  extraPackages = with pkgs; [
+  #     intel-media-driver
+  #     vaapiIntel
+  #     vaapiVdpau
+  #     libvdpau-va-gl
+  #  ];
+  #};
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -108,14 +108,19 @@
     pavucontrol
     ncurses
     pinentry-tty
-    system76-keyboard-configurator #customize keys on lemur pro
-    #neovim-flake <- did not work
-    #neovim-flake.packages.default <- did not work
-    #neovim-flake.defaultPackage <- did not work
+    wl-clipboard
+    brightnessctl
+    #system76-keyboard-configurator #customize keys on lemur pro
     inputs.neovim-flake.packages.${system}.default
+    gtk4
+    wofi
+    dolphin
   ] ++ import ./commonpackages.nix pkgs;
 
-  programs.light.enable = true;
+  # let's try brightnessctl instead, hyprland uses that with the
+  # default config. I was using 'light' with my 'xmonad' setup on
+  # my lemur pro 11
+  programs.light.enable = false;
 
   programs.adb.enable = true;
 
@@ -127,30 +132,50 @@
     pinentryPackage = pkgs.pinentry-tty;
   };
 
-  # List services that you want to enable:
-  services.xserver = {
+  services.displayManager.sddm = {
     enable = true;
-    displayManager = {
-      lightdm.enable = true;
-    };
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true; #necessary for things like EZConfig
-      config = builtins.readFile ./xmonad/xmonad.hs;
-      enableConfiguredRecompile = true;
-    };
-
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "dvorak";
+    settings = {
+      Wayland = {
+        EnableHiDPI = "0";
+      };
     };
   };
+  services.displayManager.sddm.wayland.enable = true;
+  programs.xwayland.enable = true;
+  programs.waybar.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  services.xserver = {
+    xkb.layout = "us";
+    xkb.variant = "dvorak";
+  };
+
+  # List services that you want to enable:
+  #services.xserver = {
+  #  enable = true;
+  #  displayManager = {
+  #    lightdm.enable = true;
+  #  };
+  #  windowManager.xmonad = {
+  #    enable = true;
+  #    enableContribAndExtras = true; #necessary for things like EZConfig
+  #    config = builtins.readFile ./xmonad/xmonad.hs;
+  #    enableConfiguredRecompile = true;
+  #  };
+
+  #  # Configure keymap in X11
+  #  xkb = {
+  #    layout = "us";
+  #    variant = "dvorak";
+  #  };
+  #};
   # will this fix the touchpad not working after reboot sometimes? -> no
   # issue seemed to be fixed by some linux version update along the way
   services.libinput.enable = true;
   # compositor
-  services.picom.enable = true;
+  # services.picom.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
 

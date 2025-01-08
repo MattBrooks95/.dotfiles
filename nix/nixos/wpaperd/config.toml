@@ -1,0 +1,7 @@
+[default]
+duration = "5m"
+mode = "center"
+sorting = "ascending"
+
+[any]
+path = "/home/motoko/Wallpapers"
