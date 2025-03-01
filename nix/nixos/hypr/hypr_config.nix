@@ -199,6 +199,11 @@ input {
 
     sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
 
+# to have the keybindings be based on symbol instead of key
+# this way the voyager keybinds make sense when using it, and the laptop's keybinds
+# make sense when using it
+    resolve_binds_by_sym = 1
+
     touchpad {
         natural_scroll = false
     }
