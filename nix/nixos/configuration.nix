@@ -151,6 +151,7 @@
     xkb.layout = "us";
     xkb.variant = "dvorak";
   };
+  fonts.packages = import ./fonts.nix pkgs;
 
   # List services that you want to enable:
   #services.xserver = {
