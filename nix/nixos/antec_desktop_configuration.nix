@@ -153,6 +153,9 @@
   services.udev.packages = with pkgs; [
     headsetcontrol
   ];
+  services.pipewire = {
+    enable = true;
+  };
 
   hardware.opengl ={
     enable = true;
