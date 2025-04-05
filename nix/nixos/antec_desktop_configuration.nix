@@ -14,6 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
   # set a lower, maximum # of derivation boot files on the boot partition
   # to prevent running out of space and becoming unable to nixos-rebuild
   boot.loader.systemd-boot.configurationLimit = 30;
@@ -152,6 +153,9 @@
   services.udev.packages = with pkgs; [
     headsetcontrol
   ];
+  services.pipewire = {
+    enable = true;
+  };
 
   hardware.opengl ={
     enable = true;
