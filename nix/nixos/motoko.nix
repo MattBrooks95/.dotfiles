@@ -32,6 +32,8 @@ hostname:{ config, pkgs, ... }:
     pass
     # [configurable wallpaper cycler](https://github.com/danyspin97/wpaperd)
     wpaperd
+    # command line utility for piping json data into other commands
+    jq
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
