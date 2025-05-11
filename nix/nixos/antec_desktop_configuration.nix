@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./antec_desktop_hardware_configuration.nix
+      ./sound_configuration.nix
+      ./input_method_settings.nix
     ];
 
   # Bootloader.
@@ -58,12 +60,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.config.pulseaudio = true;
-  # TODO de-dupe, this can be shared across laptop and desktop
-  # note that since this doesn't exist, and the waybar config would try to
-  # access pulseaudio, this was stopping waybar from working
-  hardware.pulseaudio.enable = true;
 
   # TODO dedup with Lemur config, I think every NixOs system I will have will want flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -125,52 +121,23 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
   services.xserver = {
     xkb.layout = "us";
   };
-  # List services that you want to enable:
-  # services.xserver = {
-  #   enable = true;
-  #   displayManager = {
-  #     lightdm.enable = true;
-  #   };
-  #   windowManager.xmonad = {
-  #     enable = true;
-  #     enableContribAndExtras = true; #necessary for things like EZConfig
-  #     config = builtins.readFile ./xmonad/xmonad.hs;
-  #     enableConfiguredRecompile = true;
-  #   };
-  #   # Configure keymap in X11
-  #   xkb = {
-  #     layout = "us";
-  #     variant = "";
-  #   };
-  # };
 
   # TODO de-duplicate between tower and laptop configs
   # udev rules for headsetcontrol
   services.udev.packages = with pkgs; [
     headsetcontrol
   ];
-  services.pipewire = {
-    enable = true;
-  };
 
-  hardware.opengl ={
+  # can I remove this?
+  hardware.graphics ={
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    # driSupport32Bit = true;
   };
-  # services.xserver.videoDrivers = ["nvidia"];
-  # gpu
-  #hardware.nvidia = {
-  #  modesetting.enable = true;
-  #  powerManagement.enable = true;
-  #  open = false;
-  #  nvidiaSettings = true;
-  #  package = config.boot.kernelPackages.nvidiaPackages.stable;
-  #};
 
   # TODO de-dupe with laptop configuration
   virtualisation = import ./containerconfiguration.nix;

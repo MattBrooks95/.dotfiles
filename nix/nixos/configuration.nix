@@ -9,6 +9,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./sound_configuration.nix
     ];
 
   hardware.system76 = {
@@ -20,8 +21,6 @@
   # services.power-profiles-daemon.enable = false;
 
   hardware.bluetooth.enable = true;
-  # so that we have sound
-  hardware.pulseaudio.enable = true;
 
   #this seems to fix webgl performance and watching video streams perform much better
   #https://nixos.wiki/wiki/Accelerated_Video_Playback
@@ -89,8 +88,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  # enable explicit pulseaudio support for applicable packages
-  nixpkgs.config.pulseaudio = true;
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -146,6 +143,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
   services.xserver = {
     xkb.layout = "us";

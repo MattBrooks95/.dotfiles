@@ -2,9 +2,9 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       #ensure that home manager and nixos are going to use the same packages
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -40,6 +40,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.motoko = import ./motoko.nix "lemur";
+              home-manager.backupFileExtension = "nix_home_manager_backup";
             }
         ];
       };
@@ -54,6 +55,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.motoko = import ./motoko.nix "antec";
+              home-manager.backupFileExtension = "nix_home_manager_backup";
             }
         ];
       };

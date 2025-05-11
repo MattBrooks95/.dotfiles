@@ -52,7 +52,7 @@ $browser = firefox
 # exec-once = $terminal
 # exec-once = nm-applet &
 # exec-once = waybar & hyprpaper & firefox
-exec-once = waybar
+# exec-once = waybar
 exec-once = wpaperd
 ${if startFcitx5 then
 ''
@@ -70,6 +70,7 @@ exec-once = fcitx5
 # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
 env = XCURSOR_SIZE,24
+env = XCURSOR_THEME,Bibata-Modern-Classic
 env = HYPRCURSOR_SIZE,24
 
 
@@ -97,6 +98,10 @@ general {
     allow_tearing = false
 
     layout = dwindle
+}
+
+cursor {
+  enable_hyprcursor = false
 }
 
 # https://wiki.hyprland.org/Configuring/Variables/#decoration
@@ -177,8 +182,8 @@ master {
 
 # https://wiki.hyprland.org/Configuring/Variables/#misc
 misc {
-    force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
-    disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
+    force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
+    disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
 }
 
 
@@ -189,7 +194,6 @@ misc {
 # https://wiki.hyprland.org/Configuring/Variables/#input
 input {
     kb_layout = us
-# TODO this should only be set for the antec desktop
     kb_variant = ${defaultInputKeyboardVariant}
     kb_model =
     kb_options =
