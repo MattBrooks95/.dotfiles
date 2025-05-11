@@ -34,6 +34,8 @@ hostname:{ config, pkgs, ... }:
     wpaperd
     # command line utility for piping json data into other commands
     jq
+    # https://github.com/ful1e5/Bibata_Cursor
+    bibata-cursors
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
@@ -139,6 +141,20 @@ hostname:{ config, pkgs, ... }:
   home.file.".bashrc".source = ./bash/.bashrc;
   home.file.".bash_profile".source = ./bash/.bash_profile;
   home.file.".bash_aliases".source = ./bash/.bash_aliases;
+
+  # https://github.com/ful1e5/Bibata_Cursor
+  home.file."${config.xdg.dataHome}/icons" = {
+    source = "${pkgs.bibata-cursors}/share/icons/";
+    recursive = true;
+  };
+
+# Following https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

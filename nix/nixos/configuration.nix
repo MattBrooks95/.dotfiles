@@ -143,6 +143,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
   services.xserver = {
     xkb.layout = "us";
