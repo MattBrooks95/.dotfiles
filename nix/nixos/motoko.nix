@@ -119,9 +119,18 @@ hostname:{ config, pkgs, ... }:
   #setup but the 'profile' file is overwritten by something when I signin to
   #the graphical environment
   #the 'settings' for the fcitx5 configuration doesn't work with home-manager, either =(
-  xdg.configFile.fcitx5 = {
-    source = ./fcitx5;
-    recursive = true;
+  xdg.configFile."fcitx5/config" = {
+      source = ./fcitx5/config;
+  };
+  xdg.configFile."fcitx5/profile" = {
+      source = ./fcitx5/profile;
+      # not documented option that tells home manager that it's okay to overwrite the file. Fcitx5 'saves' ~/.config/fcitx5/profile
+      # which overwrites the home manager symlink. Then, the next time the computer boots,
+      # home manager will error because that file would be clobbered when home manager sets the link again
+      # and even with backup files turned on, home manager would error when it tried to 'clobber' the backup file
+      # https://github.com/fcitx/fcitx5/issues/948 here the creater says "we overwrite files, deal with it"
+      # I wonder if they would accept a PR that added config option to have fcitx5 not do this
+      force = true;
   };
 
   home.file.".xprofile".source = ./.xprofile;
@@ -130,17 +139,6 @@ hostname:{ config, pkgs, ... }:
   home.file.".bashrc".source = ./bash/.bashrc;
   home.file.".bash_profile".source = ./bash/.bash_profile;
   home.file.".bash_aliases".source = ./bash/.bash_aliases;
-
-  i18n = {
-    inputMethod = {
-      enabled = "fcitx5";
-      #fcitx5.engines = with pkgs.fcitx-engines; [ mozc ];
-      fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-      ];
-    };
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

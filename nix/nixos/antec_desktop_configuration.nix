@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./antec_desktop_hardware_configuration.nix
+      ./sound_configuration.nix
+      ./input_method_settings.nix
     ];
 
   # Bootloader.
@@ -129,23 +131,11 @@
   services.udev.packages = with pkgs; [
     headsetcontrol
   ];
-  # TODO de-dupe w/laptop configuration
-  services.pipewire = {
-    enable = true;
-    # without this setting, OBS had no audio input, pavucontrol did not work
-    # and videos in firefox did not have sound
-    pulse = {
-      enable = true;
-    };
-    audio = {
-      enable = true;
-    };
-  };
 
-  hardware.opengl ={
+  # can I remove this?
+  hardware.graphics ={
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    # driSupport32Bit = true;
   };
 
   # TODO de-dupe with laptop configuration
