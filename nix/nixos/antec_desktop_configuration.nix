@@ -73,7 +73,6 @@
     firefox
     git
     docker-compose
-    fcitx5
     zsa-udev-rules
     pavucontrol
     ncurses

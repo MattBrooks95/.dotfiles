@@ -10,6 +10,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./sound_configuration.nix
+      ./input_method_settings.nix
     ];
 
   hardware.system76 = {
@@ -100,7 +101,6 @@
     firefox
     git
     docker-compose
-    fcitx5
     ntfs3g
     pavucontrol
     ncurses
