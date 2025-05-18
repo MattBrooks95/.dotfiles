@@ -2,6 +2,7 @@
   defaultInputKeyboardVariant ? ""
   , startFcitx5 ? false
   , additionalDevices ? []
+  , monitorsSetup ? "monitor=,preferred,auto,1"
 }:
 ''
 # THIS FILE WAS CREATED BY hypr_config.nix
@@ -26,7 +27,12 @@
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
 #... = name, resolution, position, scale
+####Interpolated From Nix####
+${monitorsSetup}
+# leave this rule in as the default, so plugging in a monitor will auto place it
+# to the right of all other monitors
 monitor=,preferred,auto,1
+####Nix####
 
 
 ###################
