@@ -79,6 +79,10 @@ hostname:{ config, pkgs, ... }:
             voyagerDevice
           ];
           startFcitx5 = true;
+          monitorsSetup = ''
+          monitor=DP-1, 1920x1080@144, 0x0, 1
+          monitor=HDMI-A-1, 1920x1080@60,1920x-540, 1, transform, 1
+          '';
         };
       };
     in
