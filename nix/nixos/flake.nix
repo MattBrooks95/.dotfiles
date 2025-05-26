@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       #ensure that home manager and nixos are going to use the same packages
       inputs.nixpkgs.follows = "nixpkgs";
     };

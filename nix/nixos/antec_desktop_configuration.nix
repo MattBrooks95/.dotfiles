@@ -84,9 +84,10 @@
     #install xclip, for copy and pasting to Neovim
     gtk4
     wofi
-    dolphin
     wl-clipboard
-  ] ++ import ./commonpackages.nix pkgs;
+  ] ++ (with kdePackages; [
+    dolphin
+  ]) ++ import ./commonpackages.nix pkgs;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
