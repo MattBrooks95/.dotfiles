@@ -4,8 +4,9 @@
 -- get eslint: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
 local servers = {
 	'clangd',
-	'tsserver',
-	'pylsp',
+	'ts_ls',
+	'pyright',
+	'ruff',
 	'eslint',
 	'rust_analyzer',
 	'rescriptls'
