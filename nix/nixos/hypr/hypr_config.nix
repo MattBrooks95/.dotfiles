@@ -66,7 +66,7 @@ ${if startFcitx5 then
 # IME for Japanese. Will need mozc and fcitx5 to exist
 # (include them in the packages of your nixos system (flake.nix/configuration.nix)
 # launch fcitx5 in daemon mode https://nixos.wiki/wiki/Fcitx5
-windowrule = pseudo, fcitx
+windowrule = pseudo, title:fcitx
 exec-once = fcitx5 -d -r
 # reload fcitx5 config https://nixos.wiki/wiki/Fcitx5
 exec-once = fcitx5-remote -r

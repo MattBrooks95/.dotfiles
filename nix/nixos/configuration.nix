@@ -115,6 +115,10 @@
     dolphin
   ]) ++ import ./commonpackages.nix pkgs;
 
+  environment.sessionVariables = {
+    EDITOR = "vim";
+  };
+
   # let's try brightnessctl instead, hyprland uses that with the
   # default config. I was using 'light' with my 'xmonad' setup on
   # my lemur pro 11
