@@ -75,7 +75,7 @@
   time.timeZone = "Asia/Tokyo";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   # Configure console keymap
   console.keyMap = "dvorak";
@@ -111,8 +111,13 @@
     inputs.neovim-flake.packages.${system}.default
     gtk4
     wofi
+  ] ++ (with kdePackages; [
     dolphin
-  ] ++ import ./commonpackages.nix pkgs;
+  ]) ++ import ./commonpackages.nix pkgs;
+
+  environment.sessionVariables = {
+    EDITOR = "vim";
+  };
 
   # let's try brightnessctl instead, hyprland uses that with the
   # default config. I was using 'light' with my 'xmonad' setup on
