@@ -10,3 +10,5 @@ dracula.setup({
 				NormalFloat = { bg = "#4a4d63", fg	= colors.fg }
 		},
 })
+
+require('monokai').setup({ italics = false })
