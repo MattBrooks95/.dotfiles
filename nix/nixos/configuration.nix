@@ -13,13 +13,10 @@
       ./input_method_settings.nix
     ];
 
-  hardware.system76 = {
-    kernel-modules.enable = false;
-    power-daemon.enable = true;
-    firmware-daemon.enable = true;
-  };
+  hardware.system76.enableAll = true;
 
-  # services.power-profiles-daemon.enable = false;
+  # turn off because it conflicts with system76's stuff
+  services.power-profiles-daemon.enable = false;
 
   hardware.bluetooth.enable = true;
 
