@@ -36,6 +36,7 @@ hostname:{ config, pkgs, ... }:
     jq
     # https://github.com/ful1e5/Bibata_Cursor
     bibata-cursors
+    lazygit
   ];
 
   # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
