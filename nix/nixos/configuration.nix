@@ -31,6 +31,17 @@
   #     libvdpau-va-gl
   #  ];
   #};
+# because I have a 12th gen intel processor with integrated graphics
+# https://tech-docs.system76.com/models/lemp11/README.html
+# https://nixos.wiki/wiki/Accelerated_Video_Playback
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+    ];
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
