@@ -1,0 +1,12 @@
+git:
+  # don't fetch all branches, some repos have a large amount of stale branches that have no value in being fetched
+  # and I want to prevent lazygit from pulling them down from the remote
+  fetchAll: false
+  # stop automatically fetching
+  autoFetch: false
+# TODO figure out how to add the '--no-verify' flag **in adittion to the default flags for the push command** and push with a keybind
+# https://deepwiki.com/jesseduffield/lazygit/4.3-custom-commands
+# customCommands:
+#   - key: '<c-n>'
+#     context: 'localBranches'
+#     command: 'git push --no-verify'

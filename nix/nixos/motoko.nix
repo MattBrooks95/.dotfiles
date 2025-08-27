@@ -140,6 +140,11 @@ hostname:{ config, pkgs, ... }:
       force = true;
   };
 
+  xdg.configFile.lazygit = {
+    source    = ./lazygit;
+    recursive = true;
+  };
+
   home.file.".xprofile".source = ./.xprofile;
   home.file.".xinitrc".source = ./.xinitrc;
 
