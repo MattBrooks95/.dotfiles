@@ -11,6 +11,8 @@
       ./hardware-configuration.nix
       ./sound_configuration.nix
       ./input_method_settings.nix
+      # I never really need this but I followed the wiki
+      # ./printers.nix
     ];
 
   hardware.system76.enableAll = true;
