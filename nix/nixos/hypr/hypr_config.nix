@@ -253,6 +253,9 @@ ${builtins.concatStringsSep "\n" additionalDevices}
 # See https://wiki.hyprland.org/Configuring/Keywords/
 $mainMod = SUPER # Sets "Windows" key as main modifier
 
+# keybind to lock the screen
+bind = $mainMod, L, exec, hyprlock
+
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = SUPER_SHIFT, RETURN, exec, $terminal
 bind = SUPER_SHIFT, C, killactive,

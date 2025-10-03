@@ -160,6 +160,7 @@
     xwayland.enable = true;
     withUWSM = true;
   };
+  programs.hyprlock.enable = true;
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "dvorak";
