@@ -106,24 +106,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    firefox
-    git
-    docker-compose
     ntfs3g
-    pavucontrol
-    ncurses
     pinentry-tty
-    wl-clipboard
     brightnessctl
     #system76-keyboard-configurator #customize keys on lemur pro
     inputs.neovim-flake.packages.${system}.default
-    gtk4
-    wofi
   ] ++ (with kdePackages; [
     dolphin
-  ]) ++ import ./commonpackages.nix pkgs;
+  ]) ++ import ./commonpackages.nix pkgs
+    ++ import ./waylandpackages.nix pkgs;
 
   environment.sessionVariables = {
     EDITOR = "vim";

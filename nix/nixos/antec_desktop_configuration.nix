@@ -68,26 +68,17 @@
   # $ nix search wget
   # TODO de-dupe with Lemur setup
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    firefox
-    git
-    docker-compose
     zsa-udev-rules
-    pavucontrol
-    ncurses
     #neovim-flake <- did not work
     #neovim-flake.packages.default <- did not work
     #neovim-flake.defaultPackage <- did not work
     inputs.neovim-flake.packages.${system}.default
     #TODO I'm surprised this isn't in my laptop's nix config, yet pasting works there
     #install xclip, for copy and pasting to Neovim
-    gtk4
-    wofi
-    wl-clipboard
   ] ++ (with kdePackages; [
     dolphin
-  ]) ++ import ./commonpackages.nix pkgs;
+  ]) ++ import ./commonpackages.nix pkgs
+    ++ import ./waylandpackages.nix pkgs;
 
   environment.sessionVariables = {
     EDITOR = "vim";
@@ -96,17 +87,8 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   programs.steam.enable = true;
-
-  programs.seahorse.enable = true;
-  services.gnome.gnome-keyring = {
-    enable = true;
-  };
 
   services.displayManager.sddm =  {
     enable = true;
@@ -143,7 +125,6 @@
     # driSupport32Bit = true;
   };
 
-  # TODO de-dupe with laptop configuration
   virtualisation = import ./containerconfiguration.nix;
 
   # Enable the OpenSSH daemon.
