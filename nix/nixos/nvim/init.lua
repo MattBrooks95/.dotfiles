@@ -72,8 +72,7 @@ setKeyMaps(telescopeMappings.mappings, "n", { noremap=true })
 
 --lsp remaps - there were more in the example, but I only
 --added in the ones that seemed familiar to me from vs***e
-local lspMappings = require('mappings/lsp')
-setKeyMaps(lspMappings.mappings, "n", { noremap=true, silent=true })
+require('mappings/lsp').do_setup()
 
 local treeSitterMappings = require('mappings/treesitter')
 setKeyMaps(treeSitterMappings.mappings, "n", { noremap=true, silent=true })

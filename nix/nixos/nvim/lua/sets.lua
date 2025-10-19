@@ -45,3 +45,6 @@ vim.opt.incsearch = true
 --thank you Primeagen
 --ensure that there are always some lines above and below the curser
 vim.opt.scrolloff = 8
+
+-- explicitly set this to 'none', I think I ony want window borders on LSP stuff
+vim.o.winborder = 'none'
