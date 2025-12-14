@@ -110,7 +110,7 @@
     pinentry-tty
     brightnessctl
     #system76-keyboard-configurator #customize keys on lemur pro
-    inputs.neovim-flake.packages.${system}.default
+    inputs.neovim-flake.packages.${stdenv.hostPlatform.system}.default
   ] ++ (with kdePackages; [
     dolphin
   ]) ++ import ./commonpackages.nix pkgs
@@ -183,12 +183,13 @@
   # compositor
   # services.picom.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
 
   # udev rules for headsetcontrol
   services.udev.packages = with pkgs; [
     headsetcontrol
-    android-udev-rules
+    # From nixos 25.11 'android-udev-rules' has been removed due to being superseded by built-in systemd uaccess rules
+    # android-udev-rules
   ];
   services.udev.extraRules = let zsaRules = builtins.readFile ./zsa_udev.txt; in
     ''
