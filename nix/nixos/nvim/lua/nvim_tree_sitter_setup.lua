@@ -9,27 +9,25 @@ vim.fn.mkdir(parser_install_dir, "p")
 -- Prevents reinstall of treesitter plugins every boot
 vim.opt.runtimepath:append(parser_install_dir)
 
--- the tree sitter parsers require a bunch of c++ header files
--- so it was necessary to specify 'clang++' as the compiler instead
--- of just clang
--- I actually ended up needing to use gcc, because clang was failing for the Julia parser (which I won't even use...)
--- something about clang++ not being able to handle mixed c/c++ files and c initialization lists
-require('nvim-treesitter.install').compilers = { 'gcc' }
+local nvim_treesitter = require('nvim-treesitter').install {
+		"haskell", "javascript", "typescript", "lua", "c", "rust",
+		"python", "elixir"
+}
 
-require('nvim-treesitter.configs').setup {
-	ensure_installed = {
-			"haskell",
-			"javascript",
-			"typescript",
-			-- broken grammar, causes errors when I open a rescript file
-			-- "rescript",
-			"lua",
-			"c",
-			"rust",
-			"ocaml",
-			"python",
-			"elixir"
-	},
+require('nvim-treesitter').setup {
+	--ensure_installed = {
+	--		"haskell",
+	--		"javascript",
+	--		"typescript",
+	--		-- broken grammar, causes errors when I open a rescript file
+	--		-- "rescript",
+	--		"lua",
+	--		"c",
+	--		"rust",
+	--		"ocaml",
+	--		"python",
+	--		"elixir"
+	--},
 	sync_install = false,
 	-- ignore_install = {"javascript"},
 	highlight = {
