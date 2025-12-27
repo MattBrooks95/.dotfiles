@@ -7,3 +7,4 @@ vim.wo.list = true
 -- files for each language, OR set up an autocommand. I think doing it in ftplugin
 -- for the languages I use is the most straightforward.
 vim.treesitter.start()
+vim.lsp.enable('hls')

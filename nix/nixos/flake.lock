@@ -45,11 +45,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1766300367,
-        "narHash": "sha256-Dj9KHB/T+Yqru4yXm3OA7DLrdx53rK4eOg+o6psd3bM=",
+        "lastModified": 1766661332,
+        "narHash": "sha256-QY31SEFkCWOUeLVev9vaGR48tUxx2Av3U6MblmUPrfw=",
         "owner": "MattBrooks95",
         "repo": "neovim-flake",
-        "rev": "4e6c21a6ec0a0f238e992f4906de55c5919ceec2",
+        "rev": "655f136617309103bc9ad4f294dec79e3fcc2c6e",
         "type": "github"
       },
       "original": {
