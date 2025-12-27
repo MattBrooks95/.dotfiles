@@ -45,15 +45,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1766661332,
-        "narHash": "sha256-QY31SEFkCWOUeLVev9vaGR48tUxx2Av3U6MblmUPrfw=",
+        "lastModified": 1766842483,
+        "narHash": "sha256-bHmlApqXzBkGlwAbOSZWEIV8X2JoCbC/tJGIYz8cAXk=",
         "owner": "MattBrooks95",
         "repo": "neovim-flake",
-        "rev": "655f136617309103bc9ad4f294dec79e3fcc2c6e",
+        "rev": "3fcb26b1732225ab4b80026f9084ab3b3b7aec79",
         "type": "github"
       },
       "original": {
         "owner": "MattBrooks95",
+        "ref": "bake-in-treesitters",
         "repo": "neovim-flake",
         "type": "github"
       }

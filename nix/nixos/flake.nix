@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-flake = {
-      url = "github:MattBrooks95/neovim-flake";
+      url = "github:MattBrooks95/neovim-flake?ref=bake-in-treesitters";
     };
   };
 
