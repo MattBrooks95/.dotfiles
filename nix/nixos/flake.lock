@@ -54,7 +54,6 @@
       },
       "original": {
         "owner": "MattBrooks95",
-        "ref": "bake-in-treesitters",
         "repo": "neovim-flake",
         "type": "github"
       }
