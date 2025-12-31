@@ -20,8 +20,14 @@ function setup()
 			vim.lsp.enable(lsp)
 		end
 
+		local rescript_capabilities = vim.lsp.protocol.make_client_capabilities()
+		-- THANK YOU dkirchof, I can't link you Rescript forum post about how to set up
+		-- file watching because I'm offline
+		rescript_capabilities.workspace.didChangeWatchedFiles = {
+				dynamicRegistration = true,
+		}
 	  vim.lsp.config('rescriptls', {
-				capabilities = capabilities,
+				capabilities = rescript_capabilities,
 				cmd = {"npx", "@rescript/language-server", "--stdio" }
 		})
 
