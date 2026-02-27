@@ -5,21 +5,13 @@
 local servers = {
 	'clangd',
 	'ts_ls',
-	'pyright',
+	-- 'pyright',
 	'ruff',
 	'eslint',
 	'rust_analyzer',
 }
 
-function setup()
-		for _, lsp in ipairs(servers) do
-			vim.lsp.config(lsp, {
-				-- on_attach = my_custom_on_attach,
-				capabilities = capabilities
-			})
-			vim.lsp.enable(lsp)
-		end
-
+function setup_rescript()
 		local rescript_capabilities = vim.lsp.protocol.make_client_capabilities()
 		-- THANK YOU dkirchof, I can't link you Rescript forum post about how to set up
 		-- file watching because I'm offline
@@ -32,6 +24,24 @@ function setup()
 		})
 
 		vim.lsp.enable('rescriptls')
+end
+
+function setup_python()
+		-- vim.lsp.config('pylsp')
+		vim.lsp.enable('pylsp')
+end
+
+function setup()
+		for _, lsp in ipairs(servers) do
+			vim.lsp.config(lsp, {
+				-- on_attach = my_custom_on_attach,
+				capabilities = capabilities
+			})
+			vim.lsp.enable(lsp)
+		end
+
+		setup_rescript()
+		setup_python()
 
 		-- need to set some params for the haskell language server
 		vim.lsp.config('hls', {
