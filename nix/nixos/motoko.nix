@@ -59,11 +59,19 @@ hostname:{ config, pkgs, ... }:
         kb_variant =
       }
       '';
+      moonlanderDevice = ''
+      device {
+        name = zsa-technology-labs-moonlander-mark-i
+        kb_layout = us
+        kb_variant =
+      }
+      '';
       options = {
         lemur = {
           defaultInputKeyboardVariant = "dvorak";
           additionalDevices = [
             voyagerDevice
+            moonlanderDevice
             ''
             device {
               name = at-translated-set-2-keyboard
