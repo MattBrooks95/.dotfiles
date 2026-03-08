@@ -12,7 +12,6 @@ hostname:{ config, pkgs, ... }:
     kitty
     git
     xmobar
-    haskell-language-server
     niv
     direnv
     nodePackages."typescript"
