@@ -47,6 +47,15 @@ function setup()
 		vim.lsp.config('hls', {
 			capabilities = capabilities,
 			-- haskell-language-server-wrapper is recommended to be used for nix setups
+			settings = {
+					haskell = {
+							plugin = {
+									hlint = {
+											diagnosticsOn = false
+									}
+							}
+					}
+			},
 			cmd = {"haskell-language-server-wrapper", "--lsp"}
 		})
 		vim.lsp.enable('hls')
