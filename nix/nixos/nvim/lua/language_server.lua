@@ -46,7 +46,8 @@ function setup()
 		-- need to set some params for the haskell language server
 		vim.lsp.config('hls', {
 			capabilities = capabilities,
-			cmd = {"haskell-language-server", "--lsp"}
+			-- haskell-language-server-wrapper is recommended to be used for nix setups
+			cmd = {"haskell-language-server-wrapper", "--lsp"}
 		})
 		vim.lsp.enable('hls')
 end
