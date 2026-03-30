@@ -18,9 +18,14 @@ function setup_format_on_save()
 								buffer = ev.buf
 								, group = format_group
 								, callback = function()
-										-- I wonder if it's possible to write a lua APi for
-										-- neoformat instead of doing it the old way
-										vim.cmd("Neoformat")
+										-- use the buffer id to get the buffer file type
+										local buffer_type = vim.bo["filetype"]
+										-- only call neoformat for typescript and typescript react
+										if buffer_type == "typescript" or buffer_type == "typescriptreact" then
+												-- I wonder if it's possible to write a lua API for
+												-- neoformat instead of doing it the old way
+												vim.cmd("Neoformat")
+										end
 								end
 						})
 				end
