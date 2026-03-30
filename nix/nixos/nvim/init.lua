@@ -65,6 +65,9 @@ local language_server = require('language_server')
 
 language_server.setup()
 
+require("matt_neoformat").set_try_node()
+require("matt_neoformat").setup_format_on_save()
+
 -- telescope remaps
 -- TODO is there a better way to do this? like run the lua directly?
 local telescopeMappings = require('mappings/telescope')

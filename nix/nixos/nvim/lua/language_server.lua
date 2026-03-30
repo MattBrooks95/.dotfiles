@@ -59,6 +59,9 @@ function setup()
 			cmd = {"haskell-language-server-wrapper", "--lsp"}
 		})
 		vim.lsp.enable('hls')
+
+		require("format_on_save").setup()
+
 end
 
 local module = {
