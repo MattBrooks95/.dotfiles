@@ -28,6 +28,22 @@ end
 
 function setup_python()
 		-- vim.lsp.config('pylsp')
+		vim.lsp.config('pylsp', {
+				settings = {
+						pylsp = {
+								plugins = {
+										-- pylsp_mypy = {
+										-- 		live_mode         = false
+										-- 		, strict          = false
+										-- 		, report_progress = true
+										-- }
+										autopep8 = {
+												enabled = false
+										}
+								}
+						}
+				}
+		})
 		vim.lsp.enable('pylsp')
 end
 

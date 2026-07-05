@@ -154,6 +154,10 @@ hostname:{ config, pkgs, ... }:
 
   home.file.".xprofile".source = ./.xprofile;
   home.file.".xinitrc".source = ./.xinitrc;
+  home.file.".npmrc".text = ''
+ignore-scripts=true
+min-release-age=14
+  '';
 
   home.file.".bashrc".source = ./bash/.bashrc;
   home.file.".bash_profile".source = ./bash/.bash_profile;
