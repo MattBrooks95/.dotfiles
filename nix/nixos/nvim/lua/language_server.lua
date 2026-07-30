@@ -31,15 +31,19 @@ function setup_python()
 		vim.lsp.config('pylsp', {
 				settings = {
 						pylsp = {
-								plugins = {
-										-- pylsp_mypy = {
-										-- 		live_mode         = false
-										-- 		, strict          = false
-										-- 		, report_progress = true
-										-- }
-										autopep8 = {
-												enabled = false
+								-- configuration for using Flake8 https://github.com/python-lsp/python-lsp-server
+								configerationSources = { "flake8" }
+								, plugins = {
+										pylsp_mypy = {
+												live_mode         = false
+												, strict          = false
+												, report_progress = true
 										}
+										, autopep8      = { enabled = false }
+										, pycodestyle = { enabled = false }
+										, mccabe      = { enabled = false }
+										, pyflakes    = { enabled = false }
+										, flake8      = { enabled = true }
 								}
 						}
 				}
