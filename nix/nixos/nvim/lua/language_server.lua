@@ -5,7 +5,6 @@
 local servers = {
 	'clangd',
 	'ts_ls',
-	-- 'pyright',
 	'ruff',
 	'eslint',
 	'rust_analyzer',
@@ -37,9 +36,11 @@ function setup_python()
 										pylsp_mypy = {
 												live_mode         = false
 												, strict          = false
-												, report_progress = true
+												, report_progress = false
+												, dmypy           = true
+												, enabled         = true
 										}
-										, autopep8      = { enabled = false }
+										, autopep8    = { enabled = false }
 										, pycodestyle = { enabled = false }
 										, mccabe      = { enabled = false }
 										, pyflakes    = { enabled = false }
