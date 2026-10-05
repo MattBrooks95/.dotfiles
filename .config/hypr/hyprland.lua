@@ -1,6 +1,5 @@
 {
   defaultInputKeyboardVariant ? ""
-  , startFcitx5 ? false
   , additionalDevices ? []
   , monitorsSetup ? "monitor=,preferred,auto,1"
 }:
@@ -20,6 +19,19 @@
 # Create your files separately and then link them to this file like this:
 # source = ~/.config/hypr/myColors.conf
 
+function get_host()
+		return io.popen("hostname")
+end
+
+-- import configurations that depend on the computer
+local host = get_host()
+if host == "lemur" then
+		require("modules.lemur_laptop.lua")
+elseif host == "antec" then
+		require("modules.lemur_laptop.lua")
+else
+		print("hyrland.lua failed to determine configuration for machine host")
+end
 
 ################
 ### MONITORS ###
@@ -29,6 +41,8 @@
 #... = name, resolution, position, scale
 ####Interpolated From Nix####
 ${monitorsSetup}
+ "monitor=,preferred,auto,1"
+
 # leave this rule in as the default, so plugging in a monitor will auto place it
 # to the right of all other monitors
 monitor=,preferred,auto,1
@@ -60,9 +74,7 @@ $browser = firefox
 # exec-once = waybar & hyprpaper & firefox
 # exec-once = waybar
 exec-once = wpaperd
-${if startFcitx5 then
-''
-#### interpolated from nix ###
+
 # IME for Japanese. Will need mozc and fcitx5 to exist
 # (include them in the packages of your nixos system (flake.nix/configuration.nix)
 # launch fcitx5 in daemon mode https://nixos.wiki/wiki/Fcitx5
@@ -70,8 +82,6 @@ windowrule = pseudo, title:fcitx
 exec-once = fcitx5 -d -r
 # reload fcitx5 config https://nixos.wiki/wiki/Fcitx5
 exec-once = fcitx5-remote -r
-##############################
-'' else ""}
 
 #############################
 ### ENVIRONMENT VARIABLES ###
