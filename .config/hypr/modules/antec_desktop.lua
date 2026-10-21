@@ -1,4 +1,3 @@
-
 hl.monitor({
 		output     = "DP-1",
 		, mode     = "1920x1080@144"
@@ -12,4 +11,10 @@ h1.monitor({
 		, position  = "1920x-540"
 		, scale     = 1
 		, transform = 1
+})
+
+h1.device({
+		name = "zsa-technology-labs-moonlander-mark-i"
+		, kb_layout = "us"
+		, kb_variant = ""
 })
