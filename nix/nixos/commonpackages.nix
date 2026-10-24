@@ -10,4 +10,5 @@ pkgs: with pkgs; [
   pavucontrol
   ncurses
   gtk4
+  fnm
 ]
