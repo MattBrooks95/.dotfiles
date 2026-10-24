@@ -55,3 +55,5 @@ shopt -s checkwinsize
 shopt -s extglob
 shopt -s globstar
 shopt -s checkjobs
+
+eval "$(fnm env --use-on-cd --shell bash)"
