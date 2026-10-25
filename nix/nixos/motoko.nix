@@ -38,47 +38,10 @@ hostname:{ config, pkgs, ... }:
     lazygit
   ];
 
-  # for neovim https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
-  xdg.configFile.nvim = {
-    source = ./nvim;
-    recursive = true;
-  };
-
-  xdg.configFile.tmux = {
-    source = ./tmux;
-    recursive = true;
-  };
-
   xdg.configFile."hypr/hyprland.conf" =
     let
-      voyagerDevice = ''
-      device {
-        name = zsa-technology-labs-voyager
-        kb_layout = us
-        kb_variant =
-      }
-      '';
-      moonlanderDevice = ''
-      device {
-        name = zsa-technology-labs-moonlander-mark-i
-        kb_layout = us
-        kb_variant =
-      }
-      '';
       options = {
         lemur = {
-          defaultInputKeyboardVariant = "dvorak";
-          additionalDevices = [
-            voyagerDevice
-            moonlanderDevice
-            ''
-            device {
-              name = at-translated-set-2-keyboard
-              kb_layout = us
-              kb_variant = dvorak
-            }
-            ''
-          ];
           startFcitx5 = true;
         };
         antec = {
@@ -98,59 +61,6 @@ hostname:{ config, pkgs, ... }:
         text = import ./hypr/hypr_config.nix options."${hostname}";
         recursive = false;
       };
-
-  xdg.configFile.waybar = {
-    source = ./waybar;
-    recursive = true;
-  };
-
-  xdg.configFile.wpaperd = {
-    source = ./wpaperd;
-    recursive = true;
-  };
-
-  #home.file."./.xmonad/xmonad.hs".source = ./xmonad/xmonad.hs;
-  # I guess Xmonad wasn't reading the xdg file path, so I had to put the
-  # config file at ./.xmonad/xmonad.hs
-  #it also wasn't recompiling it so I had to force it to recompile with super+q
-  #xdg.configFile.xmobar = {
-  #  source = ./xmobar;
-  #  recursive = true;
-  #};
-
-  #xdg.configFile.alacritty = {
-  #  source = ./alacritty;
-  #  recursive = true;
-  #};
-
-  xdg.configFile.kitty = {
-    source = ./kitty;
-    recursive = true;
-  };
-
-  # I think fcitx5 is working on my laptop because I ran the gui tool and did the configuration
-  #I've tried copying those files into the ~/.config/fcitx5 folder using my nix
-  #setup but the 'profile' file is overwritten by something when I signin to
-  #the graphical environment
-  #the 'settings' for the fcitx5 configuration doesn't work with home-manager, either =(
-  xdg.configFile."fcitx5/config" = {
-      source = ./fcitx5/config;
-  };
-  xdg.configFile."fcitx5/profile" = {
-      source = ./fcitx5/profile;
-      # not documented option that tells home manager that it's okay to overwrite the file. Fcitx5 'saves' ~/.config/fcitx5/profile
-      # which overwrites the home manager symlink. Then, the next time the computer boots,
-      # home manager will error because that file would be clobbered when home manager sets the link again
-      # and even with backup files turned on, home manager would error when it tried to 'clobber' the backup file
-      # https://github.com/fcitx/fcitx5/issues/948 here the creater says "we overwrite files, deal with it"
-      # I wonder if they would accept a PR that added config option to have fcitx5 not do this
-      force = true;
-  };
-
-  xdg.configFile.lazygit = {
-    source    = ./lazygit;
-    recursive = true;
-  };
 
   home.file.".xprofile".source = ./.xprofile;
   home.file.".xinitrc".source = ./.xinitrc;
