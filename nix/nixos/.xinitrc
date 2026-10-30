@@ -1,1 +1,0 @@
-[ -f ~/.xprofile ] && . ~/.xprofile
