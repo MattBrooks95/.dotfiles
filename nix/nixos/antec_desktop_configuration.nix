@@ -79,7 +79,8 @@
   ] ++ (with kdePackages; [
     dolphin
   ]) ++ import ./commonpackages.nix pkgs
-    ++ import ./waylandpackages.nix pkgs;
+    ++ import ./waylandpackages.nix pkgs
+    ++ import ./motoko.nix pkgs;
 
   environment.sessionVariables = {
     EDITOR = "vim";
@@ -150,5 +151,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

@@ -114,7 +114,8 @@
   ] ++ (with kdePackages; [
     dolphin
   ]) ++ import ./commonpackages.nix pkgs
-    ++ import ./waylandpackages.nix pkgs;
+    ++ import ./waylandpackages.nix pkgs
+    ++ import ./motoko.nix pkgs;
 
   environment.sessionVariables = {
     EDITOR = "vim";

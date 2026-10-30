@@ -34,6 +34,8 @@ else
 end
 
 
+require("modules.cursor.lua")
+
 -- multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"))
 hl.bind("XF86AudioRaiseVolume" , hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"))
@@ -57,22 +59,21 @@ local browser = "firefox"
 hl.on("hyprland.start", function()
 		hl.exec_cmd("wpaperd")
 		hl.exec_cmd("waybar")
+		-- launch fcitx5 in daemon mode https://nixos.wiki/wiki/Fcitx5
 		hl.exec_cmd("fcitx5 -d -r")
+		-- reload fcitx5 config https://nixos.wiki/wiki/Fcitx5
 		hl.exec_cmd("fcitx5-remote -r")
 end)
 
-# IME for Japanese. Will need mozc and fcitx5 to exist
--- # launch fcitx5 in daemon mode https://nixos.wiki/wiki/Fcitx5
--- windowrule = pseudo, title:fcitx
--- exec-once = fcitx5 -d -r
--- # reload fcitx5 config https://nixos.wiki/wiki/Fcitx5
--- exec-once = fcitx5-remote -r
+hl.window_rule({
+		name = "fcitx5"
+		, match = {
+				title = "fcitx"
+		}
+		, pseudo = true
+})
 
-#############################
-### ENVIRONMENT VARIABLES ###
-#############################
-
-# See https://wiki.hyprland.org/Configuring/Environment-variables/
+-- # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
 hl.env("XCURSOR_SIZE"   , "24")
 hl.env("XCURSOR_THEME"  , "Bibata-Modern-Classic")

@@ -1,0 +1,18 @@
+[core]
+	editor = "nvim"
+
+# [credential]
+# helper = "/nix/store/8m1xb1pzdisbz3z7kbk6scrqn2b5nfhx-git-2.51.2/bin/git-credential-libsecret"
+
+[gpg]
+	format = "openpgp"
+
+# [gpg "openpgp"]
+# program = "/nix/store/flk55iby1kmq37d6ajkkvclzdp5b49s2-gnupg-2.4.9/bin/gpg"
+
+[pull]
+	rebase = false
+
+[user]
+	email = "28607360+MattBrooks95@users.noreply.github.com"
+	name = "MattBrooks95"

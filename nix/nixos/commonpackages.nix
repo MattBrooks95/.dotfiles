@@ -11,4 +11,5 @@ pkgs: with pkgs; [
   ncurses
   gtk4
   fnm
+  stow
 ]

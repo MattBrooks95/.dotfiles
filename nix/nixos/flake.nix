@@ -3,11 +3,6 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.11";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      #ensure that home manager and nixos are going to use the same packages
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     neovim-flake = {
       url = "github:MattBrooks95/neovim-flake/neovim-0.12";
     };
@@ -15,7 +10,6 @@
 
   outputs = { self
     , nixpkgs
-    , home-manager
     , neovim-flake
     , ... } @ inputs:
   let
@@ -35,13 +29,6 @@
         modules = [
           { _module.args = { inherit inputs; }; }
           ./configuration.nix
-          home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.motoko = import ./motoko.nix "lemur";
-              home-manager.backupFileExtension = "nix_home_manager_backup";
-            }
         ];
       };
       antec = lib.nixosSystem {
@@ -50,13 +37,6 @@
         modules = [
           { _module.args = { inherit inputs; }; }
           ./antec_desktop_configuration.nix
-          home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.motoko = import ./motoko.nix "antec";
-              home-manager.backupFileExtension = "nix_home_manager_backup";
-            }
         ];
       };
     };
