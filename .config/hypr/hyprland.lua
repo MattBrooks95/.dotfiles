@@ -79,11 +79,6 @@ hl.env("XCURSOR_SIZE"   , "24")
 hl.env("XCURSOR_THEME"  , "Bibata-Modern-Classic")
 hl.env("HYPRCURSOR_SIZE", "24")
 
--- cursor {
---   enable_hyprcursor = false
--- }
-
-
 -- #####################
 -- ### LOOK AND FEEL ###
 -- #####################
@@ -134,18 +129,18 @@ hl.env("HYPRCURSOR_SIZE", "24")
 
 hl.animation({ enabled = false })
 
-# See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+-- See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
 dwindle {
     pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     preserve_split = true # You probably want this
 }
 
-# See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+-- See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
 master {
     new_status = master
 }
 
-# https://wiki.hyprland.org/Configuring/Variables/#misc
+-- https://wiki.hyprland.org/Configuring/Variables/#misc
 misc {
     force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
     disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
