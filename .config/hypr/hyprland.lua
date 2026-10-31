@@ -1,9 +1,9 @@
--- # This is an example Hyprland config file.
--- # Refer to the wiki for more information.
--- # https://wiki.hyprland.org/Configuring/
+-- This is an example Hyprland config file.
+-- Refer to the wiki for more information.
+-- https://wiki.hyprland.org/Configuring/
 -- 
--- # Please note not all available settings / options are set here.
--- # For a full list, see the wiki
+-- Please note not all available settings / options are set here.
+-- For a full list, see the wiki
 
 function get_host()
 		return io.popen("hostname")
