@@ -14,7 +14,7 @@ local host = get_host()
 if host == "lemur" then
 		require("modules.lemur_laptop.lua")
 elseif host == "antec" then
-		require("modules.lemur_laptop.lua")
+		require("modules.antec_desktop.lua")
 else
 		print("hyrland.lua failed to determine configuration for machine host")
 end
@@ -89,20 +89,6 @@ hl.config({
 		, misc = {
 				force_default_wallpaper = 0 -- Set to 0 or 1 to disable the anime mascot wallpapers
 				, disable_hyprland_logo = true -- If true disables the random hyprland logo / anime girl background. :(
-		}
-		-- https://wiki.hyprland.org/Configuring/Variables/#input
-		, input = {
-				kb_layout = us
-				, kb_variant = -- TODO qwerty for desktop, dvorak for laptop
-				, kb_model = ""
-				, kb_options = ""
-				, kb_rules = ""
-				, follow_mouse = 1
-				, sensitivity = 0 -- 0 = no modification, or range from -1 to 1
-				, resolve_binds_by_sym = 1 -- TODO verify type, was an int with 1 being 'true, but LUA has booleans, so it could be a bool now
-				, touchpad = {
-						natural_scroll = false
-				}
 		}
 })
 
