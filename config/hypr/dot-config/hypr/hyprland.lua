@@ -6,19 +6,20 @@
 -- For a full list, see the wiki
 
 function get_host()
-		return io.popen("hostname")
+		local handle = io.popen("hostname")
+		return handle:read("*a"):gsub("%s+", "")
 end
 
 -- import configurations that depend on the computer
 local host = get_host()
+print(host)
 if host == "lemur" then
-		require("modules.lemur_laptop.lua")
+		require("modules.lemur_laptop")
 elseif host == "antec" then
-		require("modules.antec_desktop.lua")
+		require("modules.antec_desktop")
 else
 		print("hyrland.lua failed to determine configuration for machine host")
 end
-
 
 -- Set programs that you use
 local TERMINAL     = "kitty"

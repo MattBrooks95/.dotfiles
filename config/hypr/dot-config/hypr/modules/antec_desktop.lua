@@ -3,6 +3,7 @@ hl.monitor({
 		, mode     = "1920x1080@144"
 		, position = "0x0"
 		, scale    = 1
+		, disabled = false
 })
 
 h1.monitor({
@@ -11,6 +12,7 @@ h1.monitor({
 		, position  = "1920x-540"
 		, scale     = 1
 		, transform = 1
+		, disabled = false
 })
 
 h1.device({
