@@ -20,8 +20,6 @@ else
 end
 
 
-require("modules.cursor.lua")
-
 -- Set programs that you use
 local TERMINAL     = "kitty"
 local FILE_MANAGER = "dolphin"
@@ -78,8 +76,8 @@ hl.config({
 		}
 		-- See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
 		, dwindle = {
-				pseudotile = true -- Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-				, preserve_split = true -- You probably want this
+				-- pseudotile = true -- Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below -> this table entry doesn't seem to exist anymore
+				preserve_split = true -- You probably want this
 		}
 		-- See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
 		, master = {
@@ -90,9 +88,12 @@ hl.config({
 				force_default_wallpaper = 0 -- Set to 0 or 1 to disable the anime mascot wallpapers
 				, disable_hyprland_logo = true -- If true disables the random hyprland logo / anime girl background. :(
 		}
+		, animations = {
+				enabled = false
+		}
 })
 
-hl.animation({ enabled = false })
+-- hl.animation({ enabled = false })
 
 -- ###################
 -- ### KEYBINDINGS ###
@@ -108,18 +109,18 @@ hl.bind(MAIN_MOD .. " + L", hl.dsp.exec_cmd("hyprlock"))
 -- Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 -- TODO use table.concat for joining strings instead of manually adding '+'
 hl.bind(SUPER_SHIFT .. " + RETURN", hl.dsp.exec_cmd(TERMINAL))
-hl.bind(SUPER_SHIFT .. " + C", hl.dsp.exec_cmd(hl.dsp.window.close()))
+hl.bind(SUPER_SHIFT .. " + C", hl.dsp.window.close())
 -- TODO I can't seem to use this to switch my laptop keyboard variant back and forth between
 -- qwerty and dovrak. It's set to dvorak all the time for now
 hl.bind(MAIN_MOD .. " + G", hl.dsp.exec_cmd("hyprctl switchxkblayout current next"))
-hl.bind(MAIN_MOD .. " + M", exit,
+hl.bind(MAIN_MOD .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(MAIN_MOD .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
-hl.bind(MAIN_MOD .. " + F", togglefloating,
+hl.bind(MAIN_MOD .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(MAIN_MOD .. " + P", hl.dsp.exec_cmd(MENU))
-hl.bind(MAIN_MOD .. " + Q", pseudo, # dwindle
-hl.bind(MAIN_MOD .. " + J", togglesplit, # dwindle
-hl.bind(SUPER_SHIFT .. " + B", dl.dsp.exec_cmd(BROWSER))
-hl.bind(SUPER_SHIFT .. " + R", dl.dsp.exec_cmd("systemctl reboot"))
+hl.bind(MAIN_MOD .. " + Q", hl.dsp.window.pseudo())
+hl.bind(MAIN_MOD .. " + J", hl.dsp.layout("togglesplit"))
+hl.bind(SUPER_SHIFT .. " + B", hl.dsp.exec_cmd(BROWSER))
+hl.bind(SUPER_SHIFT .. " + R", hl.dsp.exec_cmd("systemctl reboot"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(MAIN_MOD .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -133,23 +134,24 @@ for i = 1, 10 do
 		hl.bind(MAIN_MOD .. " + " .. key, hl.dsp.focus({ workspace = i }))
 		-- Move active window to a workspace with mainMod + SHIFT + [0-9]
 		hl.bind(MAIN_MOD .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+end
 
 -- Scroll through existing workspaces with mainMod + scroll
-bind = $mainMod, mouse_down, workspace, e+1
-bind = $mainMod, mouse_up, workspace, e-1
+hl.bind(MAIN_MOD .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(MAIN_MOD .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(MAIN_MOD .. " + mouse:272", hl.dsp.drag(), { mouse = true })
-hl.bind(MAIN_MOD .. " + mouse:273", hl.dsp.resize(), { mouse = true })
+hl.bind(MAIN_MOD .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(MAIN_MOD .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume" , hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", { locked = true, repeating = true })
-hl.bind("XF86AudioRaiseVolume" , hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume" , hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"     , { locked = true, repeating = true })
-hl.bind("XF86AudioMute"        , hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"    , { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute"     , hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"  , { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp"  , hl.dsp.exec_cmd("brightnessctl s 10%+"                          , { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"                          , { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume" , hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+") , { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume" , hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+") , { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume" , hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") , { locked = true, repeating = true })
+hl.bind("XF86AudioMute"        , hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") , { locked = true, repeating = true })
+hl.bind("XF86AudioMicMute"     , hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") , { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp"  , hl.dsp.exec_cmd("brightnessctl s 10%+") , { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-") , { locked = true, repeating = true })
 -- music controls
 hl.bind("XF86AudioNext" , hl.dsp.exec_cmd("playerctl next")      , { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
@@ -157,18 +159,20 @@ hl.bind("XF86AudioPlay" , hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev" , hl.dsp.exec_cmd("playerctl previous")  , { locked = true })
 
 -- Ignore maximize requests from apps. You'll probably like this.
-local suppress_maximize_rule = hl.window.rule({
-		name             = "supress-maximize-events"
+local suppress_maximize_rule = hl.window_rule({
+		name             = "suppress-maximize-events"
 		, match          = { class = ".*" }
 		, suppress_event = "maximize"
 })
-supress_maximize_rule.set_enabled(false)
+
+suppress_maximize_rule:set_enabled(false)
+
 -- Fix some dragging issues with XWayland
 hl.window_rule({
 		name = "fix-xwayland-drags"
 		, match = {
-				, class      = "^$"
-				, title      = "^$",
+				class      = "^$"
+				, title      = "^$"
 				, xwayland   = true
 				, float      = true
 				, fullscreen = false
