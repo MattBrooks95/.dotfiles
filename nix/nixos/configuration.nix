@@ -94,7 +94,7 @@
   users.users.motoko = {
     isNormalUser = true;
     description = "Matthew Brooks";
-    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "video" "docker" "adbusers"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "video" "docker"];
   };
 
   # Allow unfree packages
@@ -111,6 +111,7 @@
     brightnessctl
     #system76-keyboard-configurator #customize keys on lemur pro
     inputs.neovim-flake.packages.${stdenv.hostPlatform.system}.default
+    # android-tools
   ] ++ (with kdePackages; [
     dolphin
   ]) ++ import ./commonpackages.nix pkgs
@@ -121,12 +122,8 @@
     EDITOR = "vim";
   };
 
-  # let's try brightnessctl instead, hyprland uses that with the
-  # default config. I was using 'light' with my 'xmonad' setup on
-  # my lemur pro 11
-  programs.light.enable = false;
-
-  programs.adb.enable = true;
+  # no longer exists, replaced by 'android-tools' package
+  # programs.adb.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
