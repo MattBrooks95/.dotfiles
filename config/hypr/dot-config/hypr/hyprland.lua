@@ -28,7 +28,7 @@ local BROWSER      = "firefox"
 
 hl.on("hyprland.start", function()
 		hl.exec_cmd("wpaperd")
-		hl.exec_cmd("waybar")
+		-- hl.exec_cmd("waybar") -- right now, I'm still on NixOS and my nix settings enable waybar automatically. Calling this here causes two waybars to show up.
 		-- launch fcitx5 in daemon mode https://nixos.wiki/wiki/Fcitx5
 		hl.exec_cmd("fcitx5 -d -r")
 		-- reload fcitx5 config https://nixos.wiki/wiki/Fcitx5
