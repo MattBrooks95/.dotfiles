@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs.url = "nixpkgs/nixos-26.05";
     neovim-flake = {
       url = "github:MattBrooks95/neovim-flake/neovim-0.12";
     };
