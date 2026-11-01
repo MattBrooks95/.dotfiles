@@ -111,7 +111,7 @@ hl.bind(MAIN_MOD .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(SUPER_SHIFT .. " + RETURN", hl.dsp.exec_cmd(TERMINAL))
 hl.bind(SUPER_SHIFT .. " + C", hl.dsp.window.close())
 -- TODO I can't seem to use this to switch my laptop keyboard variant back and forth between
--- qwerty and dovrak. It's set to dvorak all the time for now
+-- qwerty and dvorak. It's set to dvorak all the time for now
 hl.bind(MAIN_MOD .. " + G", hl.dsp.exec_cmd("hyprctl switchxkblayout current next"))
 hl.bind(MAIN_MOD .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(MAIN_MOD .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
