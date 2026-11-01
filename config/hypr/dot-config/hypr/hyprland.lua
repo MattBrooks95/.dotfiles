@@ -56,15 +56,15 @@ hl.env("HYPRCURSOR_SIZE", "24")
 
 hl.config({
 		general = {
-				gaps_in = 5
-				, gaps_out = 20
-				, border_size = 2
+				gaps_in = 3
+				, gaps_out = 2
+				, border_size = 3
 				, allow_tearing = false
 				, layout = "dwindle" -- should I try 'master'? I need keybindings to switch between more layouts.
 				, resize_on_border = false
 		}
 		, decoration = {
-				rounding = 10
+				rounding = 0
 				, active_opacity = 1.0
 				, inactive_opacity = 1.0
 				-- , shadow = {
