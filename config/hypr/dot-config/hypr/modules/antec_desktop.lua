@@ -1,12 +1,12 @@
 hl.monitor({
-		output     = "DP-1",
+		output     = "DP-1"
 		, mode     = "1920x1080@144"
 		, position = "0x0"
 		, scale    = 1
 		, disabled = false
 })
 
-h1.monitor({
+hl.monitor({
 		output      = "HDMI-A-1"
 		, mode      = "1920x1080@60"
 		, position  = "1920x-540"
@@ -15,7 +15,7 @@ h1.monitor({
 		, disabled = false
 })
 
-h1.device({
+hl.device({
 		name = "zsa-technology-labs-moonlander-mark-i"
 		, kb_layout = "us"
 		, kb_variant = ""

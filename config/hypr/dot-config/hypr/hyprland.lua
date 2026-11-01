@@ -12,7 +12,6 @@ end
 
 -- import configurations that depend on the computer
 local host = get_host()
-print(host)
 if host == "lemur" then
 		require("modules.lemur_laptop")
 elseif host == "antec" then
