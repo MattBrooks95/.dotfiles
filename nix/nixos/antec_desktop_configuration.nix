@@ -113,6 +113,7 @@
   };
   services.xserver = {
     xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # TODO de-duplicate between tower and laptop configs
