@@ -1,11 +1,6 @@
 eval "$(direnv hook zsh)"
 PROMPT="%F{yellow}%n%F{red}@%F{yellow}%m%F{red}:%F{#00FFFF}%~%F{red}$%F{green} "
 
-zstyle ':completion:*:*:git:*' script ~/.git-completions
-# `compinit` scans $fpath, so do this before calling it.
-fpath=(~/.zsh/functions $fpath)
-autoload -Uz compinit && compinit
-
 export PATH=/Users/brooks/aws_installs/aws-cli/install/aws-cli:$PATH
 alias docker="podman"
 alias npx="npm exec --no-install --"
