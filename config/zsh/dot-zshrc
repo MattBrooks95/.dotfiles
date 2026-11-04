@@ -1,0 +1,22 @@
+eval "$(direnv hook zsh)"
+PROMPT="%F{yellow}%n%F{red}@%F{yellow}%m%F{red}:%F{#00FFFF}%~%F{red}$%F{green} "
+
+zstyle ':completion:*:*:git:*' script ~/.git-completions
+# `compinit` scans $fpath, so do this before calling it.
+fpath=(~/.zsh/functions $fpath)
+autoload -Uz compinit && compinit
+
+export PATH=/Users/brooks/aws_installs/aws-cli/install/aws-cli:$PATH
+alias docker="podman"
+alias npx="npm exec --no-install --"
+alias lsa="ls -la"
+alias ll="ls -l"
+
+export PATH=/Users/brooks/.cargo/bin:$PATH
+export PATH=/Users/brooks/.local/bin:$PATH
+eval "$(fnm env --use-on-cd --shell zsh)"
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit # TODO duplicated with line 12?
+complete -C '/Users/brooks/aws_installs/aws-cli/install/aws-cli/aws_completer' aws
+export PATH="$PATH:/Users/brooks/.npm/bin"
+export XDG_CONFIG_HOME=/Users/brooks/.config

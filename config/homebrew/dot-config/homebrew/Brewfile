@@ -1,0 +1,12 @@
+brew "htop"
+brew "ripgrep"
+brew "fd"
+brew "wget"
+# my neovim install from flake, which is passed into this module
+# from the home-manager flake.nix
+# inputs.neovim-flake.packages.${system}.default
+brew "tree"
+brew "vim"
+# pkgs.git can I get this from XCode?
+brew "lazygit"
+brew "fnm"
